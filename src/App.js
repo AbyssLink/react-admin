@@ -1,6 +1,6 @@
 import React from "react";
 import { Admin, Resource } from "react-admin";
-import DashHome from "./Dashboard";
+import { DashHome } from "./Dashboard";
 import { UserList } from "./users";
 import authProvider from "./authProvider";
 import jsonServerProvider from "ra-data-json-server";
