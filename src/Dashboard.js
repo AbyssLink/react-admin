@@ -1,6 +1,7 @@
 import React from "react";
 import { Title } from "react-admin";
 import { Analytics } from "./apexChart";
+import { CandleStick } from "./candleStick";
 import Grid from "@material-ui/core/Grid";
 import { useQueryWithStore, Loading, Error } from "react-admin";
 
@@ -26,7 +27,7 @@ export const DashHome = props => {
       <Title title="Welcome to the administration" />
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Analytics type="bar" data={{ xs, ys }}></Analytics>
+          <CandleStick type="candlestick" data={{ xs, ys }}></CandleStick>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Analytics type="area" data={{ xs, ys }}></Analytics>
