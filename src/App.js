@@ -2,7 +2,7 @@ import React from "react";
 import { Admin, Resource } from "react-admin";
 import { DashHome } from "./Dashboard";
 import { UserList } from "./users";
-import { StockUSChart } from "./stockChart";
+import { StockHistory } from "./stockHistory";
 import authProvider from "./authProvider";
 import jsonServerProvider from "ra-data-json-server";
 
@@ -16,7 +16,7 @@ const App = () => (
   >
     {/* <Resource name="posts" list={DashHome} /> */}
     {/* <Resource name="users" list={UserList} /> */}
-    <Resource name="stocks" list={StockUSChart} />
+    <Resource name="stocks" list={StockHistory} />
   </Admin>
 );
 
