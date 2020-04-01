@@ -22,7 +22,7 @@ export class CandleStick extends Component {
           type: "candlestick"
         },
         title: {
-          text: "AAPL",
+          text: props.title,
           align: "left"
         },
         tooltip: {
@@ -41,6 +41,15 @@ export class CandleStick extends Component {
   }
 
   render() {
+    if (this.state.series.data === false) {
+      return (
+        <Card>
+          <CardContent>
+            <Chart width={"100%"} height={"600"} />
+          </CardContent>
+        </Card>
+      );
+    }
     return (
       <Card>
         <CardContent>
@@ -50,9 +59,9 @@ export class CandleStick extends Component {
           <Chart
             options={this.state.options}
             series={this.state.series}
-            type={this.props.type}
+            type="candlestick"
             width={"100%"}
-            height={"450"}
+            height={"600"}
           />
         </CardContent>
       </Card>
