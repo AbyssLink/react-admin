@@ -3,7 +3,6 @@ import Chart from "react-apexcharts";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
-import dayjs from "dayjs";
 
 export class CandleStick extends Component {
   constructor(props) {
@@ -40,6 +39,29 @@ export class CandleStick extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.title !== this.state.options.title) {
+      this.setState({
+        series: [
+          {
+            ...this.state.series[0].name,
+            data: nextProps.data
+          }
+        ],
+        options: {
+          ...this.state.options.chart,
+          title: {
+            text: nextProps.title,
+            ...this.state.options.title.align
+          },
+          ...this.state.options.tooltip,
+          ...this.state.options.xaxis,
+          ...this.state.options.yaxis
+        }
+      });
+    }
+  }
+
   render() {
     if (this.state.series.data === false) {
       return (
@@ -54,7 +76,7 @@ export class CandleStick extends Component {
       <Card>
         <CardContent>
           <Typography color="textSecondary" gutterBottom>
-            {this.state.options.chart.id}
+            STOCK HISTORY
           </Typography>
           <Chart
             options={this.state.options}

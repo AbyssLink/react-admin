@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CandleStick } from "./candleStick";
 import { useQueryWithStore, Loading, Error } from "react-admin";
 
@@ -10,6 +10,8 @@ export const StockChart = props => {
       id: props.symbol
     }
   });
+
+  // const [chartData, setChartData] = useState("");
 
   if (!loaded) {
     return <Loading />;
