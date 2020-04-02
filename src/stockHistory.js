@@ -6,6 +6,7 @@ import SearchBar from "material-ui-search-bar";
 
 export const StockHistory = props => {
   const [symbolId, setSymbolId] = useState("AAPL");
+  const [searchId, setSearchId] = useState("AAPL");
 
   return (
     <div>
@@ -16,6 +17,7 @@ export const StockHistory = props => {
             value={symbolId}
             onChange={newValue => setSymbolId(newValue)}
             onRequestSearch={symbolId => {
+              setSearchId(symbolId);
               console.log("OnRequest", symbolId);
             }}
             style={{
@@ -25,7 +27,7 @@ export const StockHistory = props => {
           />
         </Grid>
         <Grid item xs={12} sm={12}>
-          <StockChart symbol="AAPL"></StockChart>
+          <StockChart symbol={searchId}></StockChart>
         </Grid>
       </Grid>
     </div>
