@@ -8,7 +8,7 @@ export class CandleStick extends Component {
     this.state = {
       series: [
         {
-          name: "candle",
+          name: props.title,
           data: props.data.slice(
             props.data.length - props.amount,
             props.data.length
@@ -17,7 +17,7 @@ export class CandleStick extends Component {
       ],
       options: {
         chart: {
-          id: "apexchart-example",
+          id: props.title,
           type: "candlestick"
         },
         title: {
@@ -44,7 +44,7 @@ export class CandleStick extends Component {
       this.setState({
         series: [
           {
-            ...this.state.series[0].name,
+            name: nextProps.title,
             data: nextProps.data.slice(
               nextProps.data.length - nextProps.amount,
               nextProps.data.length
@@ -52,7 +52,10 @@ export class CandleStick extends Component {
           }
         ],
         options: {
-          ...this.state.options.chart,
+          chart: {
+            id: nextProps.title,
+            ...this.state.options.chart.type
+          },
           title: {
             text: nextProps.title,
             ...this.state.options.title.align
@@ -72,7 +75,7 @@ export class CandleStick extends Component {
         series={this.state.series}
         type="candlestick"
         width={"100%"}
-        height={"600"}
+        height={"650"}
       />
     );
   }
