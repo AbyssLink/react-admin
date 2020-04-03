@@ -8,7 +8,6 @@ import Card from "@material-ui/core/Card";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import { StockChart } from "./stockChart";
@@ -16,10 +15,11 @@ import Tab from "@material-ui/core/Tab";
 import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import LinkIcon from "@material-ui/icons/Link";
 import SearchIcon from "@material-ui/icons/Search";
 import BarChartIcon from "@material-ui/icons/BarChart";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -52,6 +52,12 @@ const useStyles = makeStyles(theme => ({
   },
   tabs: {
     flexGrow: 1
+  },
+  title: {
+    fontSize: 14
+  },
+  divRoot: {
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -79,6 +85,11 @@ export const StockHistory = props => {
     console.log("Type = ", event.target.value);
   };
 
+  const handleSearchIdChange = event => {
+    setSearchId(event.target.value);
+    console.log("SearchId = ", event.target.value);
+  };
+
   const handleKeyPress = event => {
     if (event.key === "Enter") {
       setSearchId(symbolId);
@@ -87,10 +98,10 @@ export const StockHistory = props => {
   };
 
   return (
-    <div>
-      <Title title="Welcome to the administration" />
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={6}>
+    <div className={classes.divRoot}>
+      <Title title="Query Historical Stock Data" />
+      <Grid container justify="center" spacing={2}>
+        <Grid item xs={12} sm={9}>
           <Paper component="form" className={classes.root}>
             <IconButton
               color="primary"
@@ -101,7 +112,7 @@ export const StockHistory = props => {
             </IconButton>
             <InputBase
               className={classes.input}
-              placeholder="search symbols from yahoo finance"
+              placeholder="search symbols"
               // inputProps={{ "aria-label": symbolId }}
               onChange={event => setSymbolId(event.target.value)}
               onKeyPress={handleKeyPress}
@@ -134,6 +145,26 @@ export const StockHistory = props => {
               </Select>
             </FormControl>
             <Divider className={classes.divider} orientation="vertical" />
+            <FormControl className={classes.formControl}>
+              <Select
+                labelId="demo-controlled-open-select-label"
+                id="demo-controlled-open-select"
+                value={searchId}
+                displayEmpty
+                onChange={handleSearchIdChange}
+              >
+                <MenuItem value={"AAPL"}>AAPL</MenuItem>
+                <MenuItem value={"AMZN"}>AMZN</MenuItem>
+                <MenuItem value={"FB"}>FB</MenuItem>
+                <MenuItem value={"GOOG"}>GOOG</MenuItem>
+                <MenuItem value={"LK"}>LK</MenuItem>
+                <MenuItem value={"MSFT"}>MSFT</MenuItem>
+                <MenuItem value={"NFLX"}>NFLX</MenuItem>
+                <MenuItem value={"SNE"}>SNE</MenuItem>
+                <MenuItem value={"TLSA"}>TLSA</MenuItem>
+              </Select>
+            </FormControl>
+            <Divider className={classes.divider} orientation="vertical" />
             <IconButton
               color="primary"
               className={classes.iconButton}
@@ -156,7 +187,7 @@ export const StockHistory = props => {
             </Button> */}
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={9}>
           <Paper className={classes.tabs}>
             <Tabs
               value={value}
@@ -171,6 +202,13 @@ export const StockHistory = props => {
             </Tabs>
             <Card>
               <CardContent>
+                <Typography
+                  className={classes.title}
+                  color="textSecondary"
+                  gutterBottom
+                >
+                  Historical Stock Chart
+                </Typography>
                 <StockChart
                   symbol={searchId}
                   amount={time}

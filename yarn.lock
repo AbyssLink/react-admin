@@ -2867,7 +2867,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5, classnames@~2.2.5:
+classnames@~2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -6800,14 +6800,6 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-material-ui-search-bar@^1.0.0-beta.14:
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/material-ui-search-bar/-/material-ui-search-bar-1.0.0-beta.14.tgz#6ab53f3c2c58c0c634b13a96f7ebaf068dcbb27e"
-  integrity sha512-K4i4iUi0Dp+iEvcAFc/KmDBS4kOtEY0Kh5ID1RX884PMhKMT9rIJcKkhPhThYPji4cCXc1pz8t5F54VMbhLmcw==
-  dependencies:
-    classnames "^2.2.5"
-    prop-types "^15.5.8"
-
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -8638,7 +8630,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.0, prop-types@^15.7.2:
+prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.0, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
