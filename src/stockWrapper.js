@@ -44,7 +44,11 @@ export const CenteredTabs = props => {
       </Tabs>
       <Card>
         <CardContent>
-          <StockChart symbol={props.symbol} amount={time}></StockChart>
+          <StockChart
+            symbol={props.symbol}
+            amount={time}
+            type={props.type}
+          ></StockChart>
         </CardContent>
       </Card>
     </Paper>
