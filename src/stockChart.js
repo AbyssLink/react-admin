@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { CandleStick } from "./candleStick";
+import { AreaChart } from "./areaChart";
 import { useQueryWithStore, Loading, Error } from "react-admin";
 
 export const StockChart = props => {
@@ -19,13 +20,27 @@ export const StockChart = props => {
   if (error) {
     return <Error />;
   }
-  return (
-    <div>
-      <CandleStick
-        title={props.symbol}
-        data={data}
-        amount={props.amount}
-      ></CandleStick>
-    </div>
-  );
+  if (props.type === "candlestick") {
+    return (
+      <div>
+        <CandleStick
+          title={props.symbol}
+          data={data}
+          amount={props.amount}
+          type={props.type}
+        ></CandleStick>
+      </div>
+    );
+  } else if (props.type === "area") {
+    return (
+      <div>
+        <AreaChart
+          title={props.symbol}
+          data={data}
+          amount={props.amount}
+          type={props.type}
+        ></AreaChart>
+      </div>
+    );
+  }
 };

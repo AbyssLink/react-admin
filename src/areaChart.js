@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
-export class CandleStick extends Component {
+export class AreaChart extends Component {
   constructor(props) {
     super(props);
 
@@ -77,7 +77,7 @@ export class CandleStick extends Component {
       <Chart
         options={this.state.options}
         series={this.state.series}
-        type="candlestick"
+        type="area"
         width={"100%"}
         height={"600"}
       />

@@ -31,60 +31,49 @@ export const StockHistory = props => {
   const [type, setType] = useState("candlestick");
   const handleChange = event => {
     setType(event.target.value);
+    console.log("Type = ", event.target.value);
   };
 
   return (
     <div>
       <Title title="Welcome to the administration" />
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={9}>
-          <CenteredTabs symbol={searchId}></CenteredTabs>
+        <Grid item xs={12} sm={12}>
+          <SearchBar
+            value={symbolId}
+            onChange={newValue => setSymbolId(newValue)}
+            onRequestSearch={symbolId => {
+              setSearchId(symbolId);
+              console.log("OnRequest", symbolId);
+            }}
+            style={{
+              margin: "0 auto",
+              maxWidth: 500
+            }}
+          />
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-controlled-open-select-label">Type</InputLabel>
+            <Select
+              labelId="demo-controlled-open-select-label"
+              id="demo-controlled-open-select"
+              value={type}
+              onChange={handleChange}
+            >
+              <MenuItem value={"candlestick"}>Candlestick</MenuItem>
+              <MenuItem value={"area"}>Area</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            variant="contained"
+            color="primary"
+            target="_blank"
+            href={"https://finance.yahoo.com/quote/" + searchId}
+          >
+            Yahoo Finance Link
+          </Button>
         </Grid>
-        <Grid item xs={12} sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Control Panel
-              </Typography>
-              <Typography component="h4">Input Symbol</Typography>
-              <SearchBar
-                value={symbolId}
-                onChange={newValue => setSymbolId(newValue)}
-                onRequestSearch={symbolId => {
-                  setSearchId(symbolId);
-                  console.log("OnRequest", symbolId);
-                }}
-                style={{
-                  margin: "0 auto",
-                  maxWidth: 500
-                }}
-              />
-              <Typography component="h4">Change View</Typography>
-              <FormControl className={classes.formControl}>
-                <InputLabel id="demo-controlled-open-select-label">
-                  Type
-                </InputLabel>
-                <Select
-                  labelId="demo-controlled-open-select-label"
-                  id="demo-controlled-open-select"
-                  value={type}
-                  onChange={handleChange}
-                >
-                  <MenuItem value={"candlestick"}>Candlestick</MenuItem>
-                  <MenuItem value={"area"}>Area</MenuItem>
-                </Select>
-              </FormControl>
-              <Typography component="h4">Detailed</Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                target="_blank"
-                href={"https://finance.yahoo.com/quote/" + searchId}
-              >
-                Yahoo Finance Link
-              </Button>
-            </CardContent>
-          </Card>
+        <Grid item xs={12} sm={12}>
+          <CenteredTabs symbol={searchId} type={type}></CenteredTabs>
         </Grid>
       </Grid>
     </div>
