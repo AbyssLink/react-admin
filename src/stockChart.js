@@ -1,6 +1,7 @@
 import React from "react";
 import { CandleStick } from "./candleStick";
 import { AreaChart } from "./areaChart";
+import { LineChart } from "./lineChart";
 import { useQueryWithStore, Loading, Error } from "react-admin";
 
 export const StockChart = props => {
@@ -40,6 +41,17 @@ export const StockChart = props => {
           amount={props.amount}
           type={props.type}
         ></AreaChart>
+      </div>
+    );
+  } else if (props.type === "line") {
+    return (
+      <div>
+        <LineChart
+          title={props.symbol}
+          data={data}
+          amount={props.amount}
+          type={props.type}
+        ></LineChart>
       </div>
     );
   }
