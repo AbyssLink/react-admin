@@ -21,7 +21,11 @@ export const StockChart = props => {
   }
   return (
     <div>
-      <CandleStick title={props.symbol} data={data}></CandleStick>
+      <CandleStick
+        title={props.symbol}
+        data={data}
+        amount={props.amount}
+      ></CandleStick>
     </div>
   );
 };

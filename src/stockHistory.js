@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Title } from "react-admin";
 import { StockChart } from "./stockChart";
+import { CenteredTabs } from "./stockWrapper";
 import SearchBar from "material-ui-search-bar";
 
 export const StockHistory = props => {
@@ -27,7 +28,7 @@ export const StockHistory = props => {
           />
         </Grid>
         <Grid item xs={12} sm={12}>
-          <StockChart symbol={searchId}></StockChart>
+          <CenteredTabs symbol={searchId}></CenteredTabs>
         </Grid>
       </Grid>
     </div>
