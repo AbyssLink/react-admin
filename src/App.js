@@ -16,7 +16,7 @@ const App = () => (
   >
     {/* <Resource name="posts" list={DashHome} /> */}
     {/* <Resource name="users" list={UserList} /> */}
-    <Resource name="stocks" list={StockHistory} />
+    <Resource name="stocks history" list={StockHistory} />
   </Admin>
 );
 
