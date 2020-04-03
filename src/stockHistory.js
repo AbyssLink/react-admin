@@ -90,7 +90,7 @@ export const StockHistory = props => {
     <div>
       <Title title="Welcome to the administration" />
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={6}>
           <Paper component="form" className={classes.root}>
             <IconButton
               color="primary"
@@ -130,6 +130,7 @@ export const StockHistory = props => {
               >
                 <MenuItem value={"candlestick"}>Candlestick</MenuItem>
                 <MenuItem value={"area"}>Area</MenuItem>
+                <MenuItem value={"line"}>Line</MenuItem>
               </Select>
             </FormControl>
             <Divider className={classes.divider} orientation="vertical" />

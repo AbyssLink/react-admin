@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
-export class AreaChart extends Component {
+export class LineChart extends Component {
   constructor(props) {
     super(props);
 
@@ -77,7 +77,7 @@ export class AreaChart extends Component {
       <Chart
         options={this.state.options}
         series={this.state.series}
-        type="area"
+        type="line"
         width={"100%"}
         height={"550"}
       />
