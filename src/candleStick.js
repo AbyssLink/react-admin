@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import Typography from "@material-ui/core/Typography";
-import CardContent from "@material-ui/core/CardContent";
-import Card from "@material-ui/core/Card";
 
 export class CandleStick extends Component {
   constructor(props) {
@@ -12,7 +9,10 @@ export class CandleStick extends Component {
       series: [
         {
           name: "candle",
-          data: props.data
+          data: props.data.slice(
+            props.data.length - props.amount,
+            props.data.length
+          )
         }
       ],
       options: {
@@ -45,7 +45,10 @@ export class CandleStick extends Component {
         series: [
           {
             ...this.state.series[0].name,
-            data: nextProps.data
+            data: nextProps.data.slice(
+              nextProps.data.length - nextProps.amount,
+              nextProps.data.length
+            )
           }
         ],
         options: {
@@ -63,30 +66,14 @@ export class CandleStick extends Component {
   }
 
   render() {
-    if (this.state.series.data === false) {
-      return (
-        <Card>
-          <CardContent>
-            <Chart width={"100%"} height={"600"} />
-          </CardContent>
-        </Card>
-      );
-    }
     return (
-      <Card>
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            STOCK HISTORY
-          </Typography>
-          <Chart
-            options={this.state.options}
-            series={this.state.series}
-            type="candlestick"
-            width={"100%"}
-            height={"600"}
-          />
-        </CardContent>
-      </Card>
+      <Chart
+        options={this.state.options}
+        series={this.state.series}
+        type="candlestick"
+        width={"100%"}
+        height={"600"}
+      />
     );
   }
 }
