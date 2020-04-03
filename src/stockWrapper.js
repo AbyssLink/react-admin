@@ -23,9 +23,9 @@ export const CenteredTabs = props => {
     if (newValue == 0) {
       setTime(5);
     } else if (newValue == 1) {
-      setTime(20);
+      setTime(21);
     } else if (newValue == 2) {
-      setTime(60);
+      setTime(65);
     }
   };
 
