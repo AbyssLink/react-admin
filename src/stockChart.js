@@ -7,7 +7,7 @@ import { useQueryWithStore, Loading, Error } from "react-admin";
 export const StockChart = props => {
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
-    resource: "stocks",
+    resource: "stocks-history",
     payload: {
       id: props.symbol
     }
@@ -20,6 +20,10 @@ export const StockChart = props => {
   }
   if (error) {
     return <Error />;
+    // return <div>ERROR!</div>;
+  }
+  if (data["success"] === false) {
+    return <div>ERROR! No such stock!</div>;
   }
   if (props.type === "candlestick") {
     return (
