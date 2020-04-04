@@ -79,7 +79,7 @@ export class LineChart extends Component {
         series={this.state.series}
         type="line"
         width={"100%"}
-        height={"550"}
+        height={"300"}
       />
     );
   }
