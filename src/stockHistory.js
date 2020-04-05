@@ -25,6 +25,8 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { List, Datagrid, TextField } from "react-admin";
 import { StockHistoryList } from "./stockHistoryList";
+import { FolderList } from "./folderList";
+import { StockInfo } from "./stockInfo";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -265,10 +267,10 @@ export const StockHistory = props => {
             </Paper> */}
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <StockHistoryList symbol={searchId}></StockHistoryList>
+        <Grid item xs={12} sm={4}>
+          <StockInfo symbol={searchId}></StockInfo>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={8}>
           <StockHistoryList symbol={searchId}></StockHistoryList>
         </Grid>
       </Grid>

@@ -1,13 +1,13 @@
 import React from "react";
 import { useQueryWithStore, Loading, Error } from "react-admin";
-import { SimpleTable } from "./table";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import { FolderList } from "./folderList";
 
-export const StockHistoryList = props => {
+export const StockInfo = props => {
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
-    resource: "stocks-history-list",
+    resource: "stocks-info",
     payload: {
       id: props.symbol
     }
@@ -39,6 +39,6 @@ export const StockHistoryList = props => {
         </Card>
       );
     }
-    return <SimpleTable data={data} symbol={props.symbol}></SimpleTable>;
+    return <FolderList data={data} symbol={props.symbol}></FolderList>;
   }
 };
