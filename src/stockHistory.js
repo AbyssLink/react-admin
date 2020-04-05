@@ -23,6 +23,8 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import { List, Datagrid, TextField } from "react-admin";
+import { StockHistoryList } from "./stockHistoryList";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -60,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 14
   },
   divRoot: {
-    marginTop: theme.spacing(4)
+    marginTop: theme.spacing(3)
   },
   typography: {
     padding: theme.spacing(2)
@@ -119,7 +121,7 @@ export const StockHistory = props => {
     <div className={classes.divRoot}>
       <Title title="Query Historical Stock Data" />
       <Grid container justify="center" spacing={3}>
-        <Grid item xs={12} sm={10}>
+        <Grid item xs={12} sm={12}>
           <Paper component="form" className={classes.root}>
             {/* <IconButton
               color="primary"
@@ -180,9 +182,9 @@ export const StockHistory = props => {
               }}
             >
               <Typography className={classes.typography}>
-                Data Source: AKShare <br />
-                Search the stock you like! <br />
-                And change chart type by Select
+                Search any stock you like! <br />
+                And change chart type by Select <br />
+                Data Source: AKShare
               </Typography>
             </Popover>
             <Divider className={classes.divider} orientation="vertical" />
@@ -225,7 +227,7 @@ export const StockHistory = props => {
             </FormControl>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={10}>
+        <Grid item xs={12} sm={12}>
           <Paper className={classes.tabs}>
             <Tabs
               value={value}
@@ -240,13 +242,13 @@ export const StockHistory = props => {
             </Tabs>
             <Card>
               <CardContent>
-                <Typography
+                {/* <Typography
                   className={classes.title}
                   color="textSecondary"
                   gutterBottom
                 >
                   Historical Stock Chart
-                </Typography>
+                </Typography> */}
                 <StockChart
                   symbol={searchId}
                   amount={time}
@@ -254,7 +256,20 @@ export const StockHistory = props => {
                 ></StockChart>
               </CardContent>
             </Card>
+            {/* <Paper>
+              <StockChart
+                symbol={searchId}
+                amount={time}
+                type={type}
+              ></StockChart>
+            </Paper> */}
           </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <StockHistoryList symbol={searchId}></StockHistoryList>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <StockHistoryList symbol={searchId}></StockHistoryList>
         </Grid>
       </Grid>
     </div>

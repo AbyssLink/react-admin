@@ -25,7 +25,11 @@ export class AreaChart extends Component {
         },
         title: {
           text: props.title,
-          align: "left"
+          align: "left",
+          style: {
+            fontSize: "20px",
+            fontWeight: "bold"
+          }
         },
         tooltip: {
           enabled: true
@@ -62,7 +66,8 @@ export class AreaChart extends Component {
           ...this.state.options.dataLabels,
           title: {
             text: nextProps.title,
-            ...this.state.options.title.align
+            ...this.state.options.title.align,
+            ...this.state.options.title.style
           },
           ...this.state.options.tooltip,
           ...this.state.options.xaxis,
