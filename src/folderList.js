@@ -7,6 +7,9 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ImageIcon from "@material-ui/icons/Image";
 import WorkIcon from "@material-ui/icons/Work";
+import GroupIcon from "@material-ui/icons/Group";
+import PhoneIcon from "@material-ui/icons/Phone";
+import HomeIcon from "@material-ui/icons/Home";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
 import Link from "@material-ui/core/Link";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -16,12 +19,39 @@ import IconButton from "@material-ui/core/IconButton";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import {
+  green,
+  pink,
+  blue,
+  deepOrange,
+  deepPurple
+} from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     // maxWidth: 360,
     backgroundColor: theme.palette.background.paper
+  },
+  orange: {
+    color: theme.palette.getContrastText(deepOrange[500]),
+    backgroundColor: deepOrange[500]
+  },
+  purple: {
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[500]
+  },
+  blue: {
+    color: theme.palette.getContrastText(blue[500]),
+    backgroundColor: blue[500]
+  },
+  pink: {
+    color: theme.palette.getContrastText(pink[500]),
+    backgroundColor: pink[500]
+  },
+  green: {
+    color: "#fff",
+    backgroundColor: green[500]
   }
 }));
 
@@ -61,8 +91,8 @@ export const FolderList = props => {
         <List className={classes.root}>
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
+              <Avatar variant="rounded" src={props.data["logo_url"]}>
+                {/* <ImageIcon /> */}
               </Avatar>
             </ListItemAvatar>
             <ListItemText
@@ -76,7 +106,7 @@ export const FolderList = props => {
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
+              <Avatar className={classes.orange}>
                 <WorkIcon />
               </Avatar>
             </ListItemAvatar>
@@ -84,16 +114,16 @@ export const FolderList = props => {
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
-                <BeachAccessIcon />
+              <Avatar className={classes.blue}>
+                <PhoneIcon />
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary="Phone" secondary={props.data["phone"]} />
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
-                <BeachAccessIcon />
+              <Avatar className={classes.pink}>
+                <HomeIcon />
               </Avatar>
             </ListItemAvatar>
             <ListItemText
@@ -107,8 +137,8 @@ export const FolderList = props => {
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
-                <BeachAccessIcon />
+              <Avatar className={classes.green}>
+                <GroupIcon />
               </Avatar>
             </ListItemAvatar>
             <ListItemText
