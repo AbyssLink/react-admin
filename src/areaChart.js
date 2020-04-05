@@ -84,7 +84,7 @@ export class AreaChart extends Component {
         series={this.state.series}
         type="area"
         width={"100%"}
-        height={"300"}
+        height={this.props.height}
       />
     );
   }

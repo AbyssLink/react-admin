@@ -14,6 +14,7 @@ export const StockChart = props => {
   });
 
   // const [chartData, setChartData] = useState("");
+  const height = 305;
 
   if (!loaded) {
     return <Loading />;
@@ -33,6 +34,7 @@ export const StockChart = props => {
           data={data}
           amount={props.amount}
           type={props.type}
+          height={height}
         ></CandleStick>
       </div>
     );
@@ -44,6 +46,7 @@ export const StockChart = props => {
           data={data}
           amount={props.amount}
           type={props.type}
+          height={height}
         ></AreaChart>
       </div>
     );
@@ -55,6 +58,7 @@ export const StockChart = props => {
           data={data}
           amount={props.amount}
           type={props.type}
+          height={height}
         ></LineChart>
       </div>
     );

@@ -106,7 +106,7 @@ export const FolderList = props => {
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar className={classes.orange}>
+              <Avatar className={classes.blue}>
                 <WorkIcon />
               </Avatar>
             </ListItemAvatar>
@@ -122,7 +122,7 @@ export const FolderList = props => {
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar className={classes.pink}>
+              <Avatar className={classes.blue}>
                 <HomeIcon />
               </Avatar>
             </ListItemAvatar>
@@ -137,7 +137,7 @@ export const FolderList = props => {
           </ListItem>
           <ListItem>
             <ListItemAvatar>
-              <Avatar className={classes.green}>
+              <Avatar className={classes.blue}>
                 <GroupIcon />
               </Avatar>
             </ListItemAvatar>
