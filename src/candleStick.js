@@ -84,7 +84,7 @@ export class CandleStick extends Component {
         series={this.state.series}
         type="candlestick"
         width={"100%"}
-        height={"300"}
+        height={this.props.height}
       />
     );
   }
