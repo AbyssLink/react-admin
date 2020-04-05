@@ -16,16 +16,11 @@ import Tab from "@material-ui/core/Tab";
 import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import LinkIcon from "@material-ui/icons/Link";
 import SearchIcon from "@material-ui/icons/Search";
-import ShowChartIcon from "@material-ui/icons/ShowChart";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { List, Datagrid, TextField } from "react-admin";
 import { StockHistoryList } from "./stockHistoryList";
-import { FolderList } from "./folderList";
 import { StockInfo } from "./stockInfo";
 
 const useStyles = makeStyles(theme => ({
@@ -267,11 +262,11 @@ export const StockHistory = props => {
             </Paper> */}
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4}>
-          <StockInfo symbol={searchId}></StockInfo>
-        </Grid>
         <Grid item xs={12} sm={8}>
           <StockHistoryList symbol={searchId}></StockHistoryList>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <StockInfo symbol={searchId}></StockInfo>
         </Grid>
       </Grid>
     </div>
