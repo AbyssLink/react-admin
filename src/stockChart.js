@@ -14,14 +14,12 @@ export const StockChart = (props) => {
   });
 
   // const [chartData, setChartData] = useState("");
-  const height = 305;
 
   if (!loaded) {
     return <Loading />;
   }
   if (error) {
     return <Error />;
-    // return <div>ERROR!</div>;
   }
   if (data["success"] === false) {
     return <div>ERROR! No such stock!</div>;
@@ -34,7 +32,7 @@ export const StockChart = (props) => {
           data={data}
           amount={props.amount}
           type={props.type}
-          height={height}
+          height={props.height}
         ></CandleStick>
       </div>
     );
@@ -46,7 +44,7 @@ export const StockChart = (props) => {
           data={data}
           amount={props.amount}
           type={props.type}
-          height={height}
+          height={props.height}
         ></AreaChart>
       </div>
     );
@@ -58,7 +56,7 @@ export const StockChart = (props) => {
           data={data}
           amount={props.amount}
           type={props.type}
-          height={height}
+          height={props.height}
         ></LineChart>
       </div>
     );

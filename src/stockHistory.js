@@ -16,6 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import React, { useState } from "react";
 import { Title } from "react-admin";
 import { StockChart } from "./stockChart";
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   divRoot: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
   },
   typography: {
     padding: theme.spacing(2),
@@ -71,11 +72,20 @@ export const StockHistory = (props) => {
   const [searchId, setSearchId] = useState("AAPL");
   const [value, setValue] = React.useState(0);
   const [time, setTime] = React.useState(5);
+  const [height, setHeight] = React.useState(315);
   const [type, setType] = useState("candlestick");
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleHelperClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleHeightHelperClick = (event) => {
+    if (height === 315) {
+      setHeight(680);
+    } else {
+      setHeight(315);
+    }
   };
 
   const handleHelperClose = () => {
@@ -184,6 +194,17 @@ export const StockHistory = (props) => {
               </Typography>
             </Popover>
             <Divider className={classes.divider} orientation="vertical" />
+            <IconButton
+              // color="primary"
+              className={classes.iconButton}
+              aria-label="chart_type"
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleHeightHelperClick}
+            >
+              <ZoomOutMapIcon />
+            </IconButton>
+            <Divider className={classes.divider} orientation="vertical" />
             <FormControl className={classes.formControl}>
               {/* <InputLabel id="demo-controlled-open-select-label">
                 Type
@@ -209,6 +230,7 @@ export const StockHistory = (props) => {
                 displayEmpty
                 onChange={handleSearchIdChange}
               >
+                <MenuItem value={searchId}>CUSTOM</MenuItem>
                 <MenuItem value={"AAPL"}>AAPL</MenuItem>
                 <MenuItem value={"AMZN"}>AMZN</MenuItem>
                 <MenuItem value={"FB"}>FB</MenuItem>
@@ -249,6 +271,7 @@ export const StockHistory = (props) => {
                   symbol={searchId}
                   amount={time}
                   type={type}
+                  height={height}
                 ></StockChart>
               </CardContent>
             </Card>
