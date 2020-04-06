@@ -80,7 +80,11 @@ export class SplineChart extends Component {
             ...state.options.xaxis.type,
             categories: getTail(props.data["date"], props.amount),
           },
-          ...state.options.tooltip,
+          tooltip: {
+            x: {
+              format: "dd/MM/yy HH:mm",
+            },
+          },
         },
       };
     }

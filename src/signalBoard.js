@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { SignalChart } from "./signalChart";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
 import Popover from "@material-ui/core/Popover";
+import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
-import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import SearchIcon from "@material-ui/icons/Search";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import React, { useState } from "react";
+import { SignalChart } from "./signalChart";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -66,7 +66,6 @@ export const SignalBoard = (props) => {
   const [searchId, setSearchId] = useState("AAPL");
   const [value, setValue] = React.useState(0);
   const [time, setTime] = React.useState(25);
-  const [type, setType] = useState("area");
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleHelperClick = (event) => {
@@ -89,11 +88,6 @@ export const SignalBoard = (props) => {
     } else if (newValue === 2) {
       setTime(300);
     }
-  };
-
-  const handleTypeChange = (event) => {
-    setType(event.target.value);
-    console.log("Type = ", event.target.value);
   };
 
   const handleSearchIdChange = (event) => {
@@ -140,7 +134,6 @@ export const SignalBoard = (props) => {
           <IconButton
             // color="primary"
             className={classes.iconButton}
-            aria-label="chart_type"
             aria-describedby={id}
             variant="contained"
             onClick={handleHelperClick}
@@ -167,11 +160,7 @@ export const SignalBoard = (props) => {
               Data Source: AKShare
             </Typography>
           </Popover>
-          <Divider className={classes.divider} orientation="vertical" />
-          <FormControl className={classes.formControl}>
-            {/* <InputLabel id="demo-controlled-open-select-label">
-            Type
-          </InputLabel> */}
+          {/* <FormControl className={classes.formControl}>
             <Select
               labelId="demo-controlled-open-select-label"
               id="demo-controlled-open-select"
@@ -182,7 +171,7 @@ export const SignalBoard = (props) => {
               <MenuItem value={"area"}>Area</MenuItem>
               <MenuItem value={"line"}>Line</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
           <Divider className={classes.divider} orientation="vertical" />
           <FormControl className={classes.formControl}>
             <Select
