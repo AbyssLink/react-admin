@@ -1,16 +1,16 @@
-import React from "react";
-import { useQueryWithStore, Loading, Error } from "react-admin";
-import { SimpleTable } from "./table";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import React from "react";
+import { Error, Loading, useQueryWithStore } from "react-admin";
+import { SimpleTable } from "./table";
 
-export const StockHistoryList = props => {
+export const StockHistoryList = (props) => {
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
     resource: "stocks-history-list",
     payload: {
-      id: props.symbol
-    }
+      id: props.symbol,
+    },
   });
 
   if (!loaded) {

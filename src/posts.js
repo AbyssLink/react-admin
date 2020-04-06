@@ -1,20 +1,20 @@
+import BookIcon from "@material-ui/icons/Book";
 import React from "react";
 import {
-  List,
-  Datagrid,
-  Edit,
   Create,
-  SimpleForm,
+  Datagrid,
   DateField,
-  TextField,
+  DateInput,
+  Edit,
   EditButton,
+  List,
+  SimpleForm,
+  TextField,
   TextInput,
-  DateInput
 } from "react-admin";
-import BookIcon from "@material-ui/icons/Book";
 export const PostIcon = BookIcon;
 
-export const PostList = props => (
+export const PostList = (props) => (
   <List {...props}>
     <Datagrid>
       <TextField source="id" />
@@ -31,7 +31,7 @@ const PostTitle = ({ record }) => {
   return <span>Post {record ? `"${record.title}"` : ""}</span>;
 };
 
-export const PostEdit = props => (
+export const PostEdit = (props) => (
   <Edit title={<PostTitle />} {...props}>
     <SimpleForm>
       <TextInput disabled source="id" />
@@ -45,7 +45,7 @@ export const PostEdit = props => (
   </Edit>
 );
 
-export const PostCreate = props => (
+export const PostCreate = (props) => (
   <Create title="Create a Post" {...props}>
     <SimpleForm>
       <TextInput source="title" />

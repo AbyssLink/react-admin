@@ -55,42 +55,43 @@ export class SplineChart extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.title !== this.state.options.title ||
-      nextProps.type !== this.state.type
-    ) {
-      this.setState({
+  // componentWillReceiveProps is not recommended, use getDerivedStateFromProps as an alternative
+  static getDerivedStateFromProps = (props, state) => {
+    if (props.title !== state.options.title.text) {
+      return {
         series: [
           {
-            ...this.state.series[0].name,
-            data: this.getTail(nextProps.data["fast"], nextProps.amount),
+            ...state.series[0].name,
+            data: this.getTail(props.data["fast"], props.amount),
           },
           {
-            ...this.state.series[1].name,
-            data: this.getTail(nextProps.data["slow"], nextProps.amount),
+            ...state.series[1].name,
+            data: this.getTail(props.data["slow"], props.amount),
           },
           {
-            ...this.state.series[2].name,
-            data: this.getTail(nextProps.data["close"], nextProps.amount),
+            ...state.series[2].name,
+            data: this.getTail(props.data["close"], props.amount),
           },
         ],
         options: {
-          ...this.state.options.stroke,
-          ...this.state.options.dataLabels,
+          ...state.options.stroke,
+          ...state.options.dataLabels,
           title: {
-            title: nextProps.title,
-            ...this.state.options.title.style,
+            title: props.title,
+            ...state.options.title.style,
           },
           xaxis: {
-            ...this.state.options.xaxis.type,
-            categories: this.getTail(nextProps.data["date"], nextProps.amount),
+            ...state.options.xaxis.type,
+            categories: this.getTail(props.data["date"], props.amount),
           },
-          ...this.state.options.tooltip,
+          ...state.options.tooltip,
         },
-      });
+      };
     }
-  }
+
+    // Return null to indicate no change to state.
+    return null;
+  };
 
   render() {
     return (

@@ -1,16 +1,16 @@
 import React from "react";
-import { CandleStick } from "./candleStick";
+import { Error, Loading, useQueryWithStore } from "react-admin";
 import { AreaChart } from "./areaChart";
+import { CandleStick } from "./candleStick";
 import { LineChart } from "./lineChart";
-import { useQueryWithStore, Loading, Error } from "react-admin";
 
-export const StockChart = props => {
+export const StockChart = (props) => {
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
     resource: "stocks-history",
     payload: {
-      id: props.symbol
-    }
+      id: props.symbol,
+    },
   });
 
   // const [chartData, setChartData] = useState("");

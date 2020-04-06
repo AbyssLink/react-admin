@@ -1,72 +1,70 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import ImageIcon from "@material-ui/icons/Image";
-import WorkIcon from "@material-ui/icons/Work";
-import GroupIcon from "@material-ui/icons/Group";
-import PhoneIcon from "@material-ui/icons/Phone";
-import HomeIcon from "@material-ui/icons/Home";
-import BeachAccessIcon from "@material-ui/icons/BeachAccess";
-import Link from "@material-ui/core/Link";
-import Toolbar from "@material-ui/core/Toolbar";
-import FilterListIcon from "@material-ui/icons/FilterList";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import {
-  green,
-  pink,
   blue,
   deepOrange,
-  deepPurple
+  deepPurple,
+  green,
+  pink,
 } from "@material-ui/core/colors";
+import IconButton from "@material-ui/core/IconButton";
+import Link from "@material-ui/core/Link";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemText from "@material-ui/core/ListItemText";
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import GroupIcon from "@material-ui/icons/Group";
+import HomeIcon from "@material-ui/icons/Home";
+import PhoneIcon from "@material-ui/icons/Phone";
+import WorkIcon from "@material-ui/icons/Work";
+import React from "react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     // maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
   orange: {
     color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500]
+    backgroundColor: deepOrange[500],
   },
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500]
+    backgroundColor: deepPurple[500],
   },
   blue: {
     color: theme.palette.getContrastText(blue[500]),
-    backgroundColor: blue[500]
+    backgroundColor: blue[500],
   },
   pink: {
     color: theme.palette.getContrastText(pink[500]),
-    backgroundColor: pink[500]
+    backgroundColor: pink[500],
   },
   green: {
     color: "#fff",
-    backgroundColor: green[500]
-  }
+    backgroundColor: green[500],
+  },
 }));
 
-const useToolbarStyles = makeStyles(theme => ({
+const useToolbarStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1)
+    paddingRight: theme.spacing(1),
   },
   title: {
     flex: "1 1 100%",
-    fontWeight: 550
-  }
+    fontWeight: 550,
+  },
 }));
 
-export const FolderList = props => {
+export const FolderList = (props) => {
   const classes = useStyles();
   const toolbarClasses = useToolbarStyles();
 

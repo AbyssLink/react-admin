@@ -1,42 +1,41 @@
-import React from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import TablePagination from "@material-ui/core/TablePagination";
-import FilterListIcon from "@material-ui/icons/FilterList";
+import TableRow from "@material-ui/core/TableRow";
+import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import React from "react";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 400
+    minWidth: 400,
   },
   title: {
-    fontWeight: 550
-  }
+    fontWeight: 550,
+  },
 });
 
-const useToolbarStyles = makeStyles(theme => ({
+const useToolbarStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1)
+    paddingRight: theme.spacing(1),
   },
   title: {
     flex: "1 1 100%",
-    fontWeight: 550
-  }
+    fontWeight: 550,
+  },
 }));
 
-export const SimpleTable = props => {
+export const SimpleTable = (props) => {
   const classes = useStyles();
   const toolbarClasses = useToolbarStyles();
   const [page, setPage] = React.useState(0);
@@ -45,7 +44,7 @@ export const SimpleTable = props => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
@@ -95,8 +94,8 @@ export const SimpleTable = props => {
             <TableBody>
               {rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map(row => (
-                  <TableRow key={row.name}>
+                .map((row, i) => (
+                  <TableRow key={i}>
                     <TableCell component="th" scope="row">
                       {row.time}
                     </TableCell>

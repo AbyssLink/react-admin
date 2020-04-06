@@ -1,16 +1,16 @@
-import React from "react";
-import { useQueryWithStore, Loading, Error } from "react-admin";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import React from "react";
+import { Error, Loading, useQueryWithStore } from "react-admin";
 import { FolderList } from "./folderList";
 
-export const StockInfo = props => {
+export const StockInfo = (props) => {
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
     resource: "stocks-info",
     payload: {
-      id: props.symbol
-    }
+      id: props.symbol,
+    },
   });
 
   if (!loaded) {
