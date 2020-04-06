@@ -64,7 +64,7 @@ export const SignalBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
   const [searchId, setSearchId] = useState("AAPL");
-  const [time, setTime] = useState(100);
+  const [time, setTime] = useState(80);
   const [height, setHeight] = React.useState(315);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -194,14 +194,12 @@ export const SignalBoard = (props) => {
             </FormControl>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={11}>
-          <Paper>
-            <SignalChart
-              symbol={searchId}
-              amount={time}
-              height={height}
-            ></SignalChart>
-          </Paper>
+        <Grid item xs={12} sm={12}>
+          <SignalChart
+            symbol={searchId}
+            amount={time}
+            height={height}
+          ></SignalChart>
         </Grid>
       </Grid>
     </div>

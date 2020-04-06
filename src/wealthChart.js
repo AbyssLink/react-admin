@@ -1,70 +1,94 @@
-class ApexChart extends React.Component {
+import React, { Component } from "react";
+import Chart from "react-apexcharts";
+import { getTail } from "./utils";
+
+export class WealthChart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       series: [
         {
-          name: "Profit",
-          data: props.data["profit"],
+          name: "WEALTH",
+          data: getTail(props.data["wealth"], props.amount),
         },
       ],
       options: {
         chart: {
-          type: "bar",
-          height: 350,
-        },
-        plotOptions: {
-          bar: {
-            colors: {
-              ranges: [
-                {
-                  from: -100,
-                  to: -46,
-                  color: "#F15B46",
-                },
-                {
-                  from: -45,
-                  to: 0,
-                  color: "#FEB019",
-                },
-              ],
-            },
-            columnWidth: "80%",
-          },
+          id: props.title,
+          type: "line",
         },
         dataLabels: {
           enabled: false,
         },
-        yaxis: {
-          title: {
-            text: "Growth",
-          },
-          labels: {
-            formatter: function (y) {
-              return y.toFixed(0) + "%";
-            },
+        stroke: {
+          curve: "smooth",
+        },
+        title: {
+          text: "WEALTH",
+          align: "left",
+          style: {
+            fontSize: "20px",
+            fontWeight: "bold",
           },
         },
         xaxis: {
           type: "datetime",
-          categories: props.data["date"],
-          labels: {
-            rotate: -90,
+          categories: getTail(props.data["date"], props.amount),
+        },
+        tooltip: {
+          x: {
+            format: "yyyy/MM/dd",
           },
         },
       },
+      symbol: props.title,
     };
   }
+
+  // componentWillReceiveProps is not recommended, use getDerivedStateFromProps as an alternative
+  static getDerivedStateFromProps = (props, state) => {
+    if (
+      props.title !== state.symbol ||
+      props.amount !== state.series[0].data.length
+    ) {
+      return {
+        series: [
+          {
+            ...state.series[0].name,
+            data: getTail(props.data["wealth"], props.amount),
+          },
+        ],
+        options: {
+          chart: {
+            id: props.title,
+            ...state.options.type,
+          },
+          ...state.options.dataLabels,
+          ...state.options.stroke,
+          ...state.options.title,
+          xaxis: {
+            ...state.options.xaxis.type,
+            categories: getTail(props.data["date"], props.amount),
+          },
+          ...state.options.tooltip,
+        },
+        symbol: props.title,
+      };
+    }
+
+    // Return null to indicate no change to state.
+    return null;
+  };
 
   render() {
     return (
       <div id="chart">
-        <ReactApexChart
+        <Chart
           options={this.state.options}
           series={this.state.series}
-          type="bar"
-          height={350}
+          type="line"
+          height={this.props.height}
         />
       </div>
     );
