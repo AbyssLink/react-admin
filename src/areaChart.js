@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
+import { getTail } from "./utils";
 
 export class AreaChart extends Component {
   constructor(props) {
@@ -9,10 +10,7 @@ export class AreaChart extends Component {
       series: [
         {
           name: props.title,
-          data: props.data.slice(
-            props.data.length - props.amount,
-            props.data.length
-          ),
+          data: getTail(props.data, props.amount),
         },
       ],
       options: {
@@ -46,36 +44,38 @@ export class AreaChart extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.title !== this.state.options.title) {
-      this.setState({
+  static getDerivedStateFromProps = (props, state) => {
+    if (
+      props.title !== state.options.title.text ||
+      props.amount !== state.series[0].data.length
+    ) {
+      return {
         series: [
           {
-            name: nextProps.title,
-            data: nextProps.data.slice(
-              nextProps.data.length - nextProps.amount,
-              nextProps.data.length
-            ),
+            name: props.title,
+            data: getTail(props.data, props.amount),
           },
         ],
         options: {
           chart: {
-            id: nextProps.title,
-            ...this.state.options.chart.type,
+            id: props.title,
+            ...state.options.chart.type,
           },
-          ...this.state.options.dataLabels,
+          ...state.options.dataLabels,
           title: {
-            text: nextProps.title,
-            ...this.state.options.title.align,
-            ...this.state.options.title.style,
+            text: props.title,
+            ...state.options.title.align,
+            ...state.options.title.style,
           },
-          ...this.state.options.tooltip,
-          ...this.state.options.xaxis,
-          ...this.state.options.yaxis,
+          ...state.options.tooltip,
+          ...state.options.xaxis,
+          ...state.options.yaxis,
         },
-      });
+      };
     }
-  }
+    // Return null to indicate no change to state.
+    return null;
+  };
 
   render() {
     return (

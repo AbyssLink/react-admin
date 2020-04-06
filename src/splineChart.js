@@ -22,18 +22,15 @@ export class SplineChart extends Component {
         },
       ],
       options: {
-        stroke: {
-          curve: "smooth",
+        chart: {
+          id: props.title,
+          type: "line",
         },
         dataLabels: {
           enabled: false,
         },
-        title: {
-          text: props.title,
-          style: {
-            fontSize: "20px",
-            fontWeight: "bold",
-          },
+        stroke: {
+          curve: "smooth",
         },
         xaxis: {
           type: "datetime",
@@ -41,17 +38,18 @@ export class SplineChart extends Component {
         },
         tooltip: {
           x: {
-            format: "dd/MM/yy HH:mm",
+            format: "yyyy/MM/dd",
           },
         },
       },
+      symbol: props.title,
     };
   }
 
   // componentWillReceiveProps is not recommended, use getDerivedStateFromProps as an alternative
   static getDerivedStateFromProps = (props, state) => {
     if (
-      props.title !== state.options.title.text ||
+      props.title !== state.symbol ||
       props.amount !== state.series[0].data.length
     ) {
       return {
@@ -70,22 +68,19 @@ export class SplineChart extends Component {
           },
         ],
         options: {
-          ...state.options.stroke,
-          ...state.options.dataLabels,
-          title: {
-            title: props.title,
-            ...state.options.title.style,
+          chart: {
+            id: props.title,
+            ...state.options.type,
           },
+          ...state.options.dataLabels,
+          ...state.options.stroke,
           xaxis: {
             ...state.options.xaxis.type,
             categories: getTail(props.data["date"], props.amount),
           },
-          tooltip: {
-            x: {
-              format: "dd/MM/yy HH:mm",
-            },
-          },
+          ...state.options.tooltip,
         },
+        ...state.symbol,
       };
     }
 
