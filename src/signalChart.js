@@ -1,7 +1,7 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import React from "react";
-import { Error, Loading, useQueryWithStore } from "react-admin";
+import { Error, Loading, useQuery } from "react-admin";
 import { SplineChart } from "./splineChart";
 
 export const SignalChart = ({ symbol, amount }) => {
@@ -11,7 +11,7 @@ export const SignalChart = ({ symbol, amount }) => {
     console.log(amount);
   };
 
-  const { loaded, error, data } = useQueryWithStore({
+  const { loaded, error, data } = useQuery({
     type: "getOne",
     resource: "ploy-signal",
     payload: {
