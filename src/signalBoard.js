@@ -86,7 +86,7 @@ export const SignalBoard = (props) => {
     } else if (newValue === 1) {
       setTime(75);
     } else if (newValue === 2) {
-      setTime(300);
+      setTime(150);
     }
   };
 
@@ -206,7 +206,7 @@ export const SignalBoard = (props) => {
           >
             <Tab label="1 Month" />
             <Tab label="3 Month" />
-            <Tab label="1 Year" />
+            <Tab label="6 Month" />
           </Tabs>
           <SignalChart symbol={searchId} amount={time}></SignalChart>
         </Paper>
