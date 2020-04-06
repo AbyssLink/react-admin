@@ -1,8 +1,8 @@
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import Typography from "@material-ui/core/Typography";
-import CardContent from "@material-ui/core/CardContent";
-import Card from "@material-ui/core/Card";
 
 export class Analytics extends Component {
   constructor(props) {
@@ -10,22 +10,22 @@ export class Analytics extends Component {
     this.state = {
       options: {
         chart: {
-          id: "apexchart-example"
+          id: "apexchart-example",
         },
         xaxis: {
-          categories: this.props.data.xs
+          categories: this.props.data.xs,
         },
         theme: {
           mode: "light",
-          palette: "palette2"
-        }
+          palette: "palette2",
+        },
       },
       series: [
         {
           name: "series-1",
-          data: this.props.data.ys
-        }
-      ]
+          data: this.props.data.ys,
+        },
+      ],
     };
   }
   render() {

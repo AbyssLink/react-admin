@@ -1,72 +1,71 @@
-import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import { Title } from "react-admin";
-import Button from "@material-ui/core/Button";
-import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
 import Popover from "@material-ui/core/Popover";
-import { StockChart } from "./stockChart";
+import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
-import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import SearchIcon from "@material-ui/icons/Search";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import React, { useState } from "react";
+import { Title } from "react-admin";
+import { StockChart } from "./stockChart";
 import { StockHistoryList } from "./stockHistoryList";
 import { StockInfo } from "./stockInfo";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   button: {
     display: "block",
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   buttonWithIcon: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 120,
   },
   root: {
     padding: "2px 4px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1
+    flex: 1,
   },
   iconButton: {
-    padding: 10
+    padding: 10,
   },
   divider: {
     height: 28,
-    margin: 4
+    margin: 4,
   },
   tabs: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
-    fontSize: 14
+    fontSize: 14,
   },
   divRoot: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   typography: {
-    padding: theme.spacing(2)
-  }
+    padding: theme.spacing(2),
+  },
 }));
 
-export const StockHistory = props => {
+export const StockHistory = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
   const [searchId, setSearchId] = useState("AAPL");
@@ -75,7 +74,7 @@ export const StockHistory = props => {
   const [type, setType] = useState("candlestick");
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleHelperClick = event => {
+  const handleHelperClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -97,17 +96,17 @@ export const StockHistory = props => {
     }
   };
 
-  const handleTypeChange = event => {
+  const handleTypeChange = (event) => {
     setType(event.target.value);
     console.log("Type = ", event.target.value);
   };
 
-  const handleSearchIdChange = event => {
+  const handleSearchIdChange = (event) => {
     setSearchId(event.target.value);
     console.log("SearchId = ", event.target.value);
   };
 
-  const handleKeyPress = event => {
+  const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       setSearchId(symbolId);
       console.log("enter press here! ");
@@ -140,7 +139,7 @@ export const StockHistory = props => {
               className={classes.input}
               placeholder="Search symbols from AKShare"
               // inputProps={{ "aria-label": symbolId }}
-              onChange={event => setSymbolId(event.target.value)}
+              onChange={(event) => setSymbolId(event.target.value)}
               onKeyPress={handleKeyPress}
             />
             <IconButton
@@ -171,11 +170,11 @@ export const StockHistory = props => {
               onClose={handleHelperClose}
               anchorOrigin={{
                 vertical: "bottom",
-                horizontal: "center"
+                horizontal: "center",
               }}
               transformOrigin={{
                 vertical: "top",
-                horizontal: "center"
+                horizontal: "center",
               }}
             >
               <Typography className={classes.typography}>

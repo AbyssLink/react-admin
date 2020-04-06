@@ -12,37 +12,37 @@ export class LineChart extends Component {
           data: props.data.slice(
             props.data.length - props.amount,
             props.data.length
-          )
-        }
+          ),
+        },
       ],
       options: {
         chart: {
           id: props.title,
-          type: "candlestick"
+          type: "candlestick",
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         title: {
           text: props.title,
           align: "left",
           style: {
             fontSize: "20px",
-            fontWeight: "bold"
-          }
+            fontWeight: "bold",
+          },
         },
         tooltip: {
-          enabled: true
+          enabled: true,
         },
         xaxis: {
-          type: "category"
+          type: "category",
         },
         yaxis: {
           tooltip: {
-            enabled: true
-          }
-        }
-      }
+            enabled: true,
+          },
+        },
+      },
     };
   }
 
@@ -55,24 +55,24 @@ export class LineChart extends Component {
             data: nextProps.data.slice(
               nextProps.data.length - nextProps.amount,
               nextProps.data.length
-            )
-          }
+            ),
+          },
         ],
         options: {
           chart: {
             id: nextProps.title,
-            ...this.state.options.chart.type
+            ...this.state.options.chart.type,
           },
           ...this.state.options.dataLabels,
           title: {
             text: nextProps.title,
             ...this.state.options.title.align,
-            ...this.state.options.title.style
+            ...this.state.options.title.style,
           },
           ...this.state.options.tooltip,
           ...this.state.options.xaxis,
-          ...this.state.options.yaxis
-        }
+          ...this.state.options.yaxis,
+        },
       });
     }
   }

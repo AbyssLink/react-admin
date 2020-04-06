@@ -1,21 +1,27 @@
-import React from "react";
 import Card from "@material-ui/core/Card";
-import { useQueryWithStore, Loading, Error } from "react-admin";
 import CardContent from "@material-ui/core/CardContent";
+import React from "react";
+import { Error, Loading, useQueryWithStore } from "react-admin";
 import { SplineChart } from "./splineChart";
 
-export const SignalChart = (props) => {
+export const SignalChart = ({ symbol, amount }) => {
+  const logData = (data) => {
+    console.log("data = ", data);
+    console.log(symbol);
+    console.log(amount);
+  };
+
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
     resource: "ploy-signal",
     payload: {
-      id: props.symbol,
+      id: symbol,
     },
   });
 
   const height = 500;
 
-  if (!loaded) {
+  if (!loaded || data === undefined) {
     return (
       <Card>
         <CardContent>
@@ -34,19 +40,21 @@ export const SignalChart = (props) => {
     );
   }
   if (data !== undefined) {
+    logData(data);
     return (
       <Card>
         <CardContent>
           <SplineChart
-            title={props.symbol}
+            title={symbol}
             data={data}
-            amount={props.amount}
+            amount={amount}
             height={height}
           ></SplineChart>
         </CardContent>
       </Card>
     );
   } else {
+    logData(data);
     return (
       <Card>
         <CardContent>data = {data}</CardContent>
