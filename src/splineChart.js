@@ -9,16 +9,16 @@ export class SplineChart extends Component {
     this.state = {
       series: [
         {
+          name: "close",
+          data: getTail(props.data["close"], props.amount),
+        },
+        {
           name: "fast signal",
           data: getTail(props.data["fast"], props.amount),
         },
         {
           name: "slow signal",
           data: getTail(props.data["slow"], props.amount),
-        },
-        {
-          name: "close",
-          data: getTail(props.data["close"], props.amount),
         },
       ],
       options: {
@@ -56,15 +56,15 @@ export class SplineChart extends Component {
         series: [
           {
             ...state.series[0].name,
-            data: getTail(props.data["fast"], props.amount),
+            data: getTail(props.data["close"], props.amount),
           },
           {
             ...state.series[1].name,
-            data: getTail(props.data["slow"], props.amount),
+            data: getTail(props.data["fast"], props.amount),
           },
           {
             ...state.series[2].name,
-            data: getTail(props.data["close"], props.amount),
+            data: getTail(props.data["slow"], props.amount),
           },
         ],
         options: {

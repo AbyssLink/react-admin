@@ -21,6 +21,9 @@ export class LineChart extends Component {
         dataLabels: {
           enabled: false,
         },
+        stroke: {
+          curve: "smooth",
+        },
         title: {
           text: props.title,
           align: "left",
@@ -62,6 +65,7 @@ export class LineChart extends Component {
             ...state.options.chart.type,
           },
           ...state.options.dataLabels,
+          ...state.options.stroke,
           title: {
             text: props.title,
             ...state.options.title.align,

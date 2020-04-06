@@ -8,13 +8,13 @@ import Paper from "@material-ui/core/Paper";
 import Popover from "@material-ui/core/Popover";
 import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import React, { useState } from "react";
+import { Title } from "react-admin";
 import { SignalChart } from "./signalChart";
 
 const useStyles = makeStyles((theme) => ({
@@ -64,9 +64,17 @@ export const SignalBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
   const [searchId, setSearchId] = useState("AAPL");
-  const [value, setValue] = React.useState(0);
-  const [time, setTime] = React.useState(25);
+  const [time, setTime] = useState(100);
+  const [height, setHeight] = React.useState(315);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleHeightHelperClick = (event) => {
+    if (height === 315) {
+      setHeight(680);
+    } else {
+      setHeight(315);
+    }
+  };
 
   const handleHelperClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -78,17 +86,6 @@ export const SignalBoard = (props) => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    if (newValue === 0) {
-      setTime(25);
-    } else if (newValue === 1) {
-      setTime(75);
-    } else if (newValue === 2) {
-      setTime(150);
-    }
-  };
 
   const handleSearchIdChange = (event) => {
     setSearchId(event.target.value);
@@ -102,115 +99,111 @@ export const SignalBoard = (props) => {
     }
   };
   return (
-    <Grid container justify="center" spacing={2}>
-      <Grid item xs={12} sm={11}>
-        <Paper component="form" className={classes.root}>
-          <IconButton
-            color="primary"
-            className={classes.iconButton}
-            aria-label="links"
-            target="_blank"
-            href={"https://finance.yahoo.com/quote/" + searchId}
-          >
-            <TrendingUpIcon />
-          </IconButton>
-          <InputBase
-            className={classes.input}
-            placeholder="Search symbols from AKShare"
-            onChange={(event) => setSymbolId(event.target.value)}
-            onKeyPress={handleKeyPress}
-          />
-          <IconButton
-            className={classes.iconButton}
-            aria-label="search"
-            onClick={() => {
-              setSearchId(symbolId);
-              // console.log("Submit Button Click!, searchId = ", searchId);
-            }}
-          >
-            <SearchIcon />
-          </IconButton>
-          <Divider className={classes.divider} orientation="vertical" />
-          <IconButton
-            // color="primary"
-            className={classes.iconButton}
-            aria-describedby={id}
-            variant="contained"
-            onClick={handleHelperClick}
-          >
-            <HelpOutlineIcon />
-          </IconButton>
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleHelperClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
-          >
-            <Typography className={classes.typography}>
-              Search any stock you like! <br />
-              And change chart type by Select <br />
-              Data Source: AKShare
-            </Typography>
-          </Popover>
-          {/* <FormControl className={classes.formControl}>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              value={type}
-              displayEmpty
-              onChange={handleTypeChange}
+    <div className={classes.divRoot}>
+      <Title title="Strategy to apply on stock" />
+      <Grid container justify="center" spacing={2}>
+        <Grid item xs={12} sm={11}>
+          <Paper component="form" className={classes.root}>
+            <IconButton
+              color="primary"
+              className={classes.iconButton}
+              aria-label="links"
+              target="_blank"
+              href={"https://finance.yahoo.com/quote/" + searchId}
             >
-              <MenuItem value={"area"}>Area</MenuItem>
-              <MenuItem value={"line"}>Line</MenuItem>
-            </Select>
-          </FormControl> */}
-          <Divider className={classes.divider} orientation="vertical" />
-          <FormControl className={classes.formControl}>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              value={searchId}
-              displayEmpty
-              onChange={handleSearchIdChange}
+              <TrendingUpIcon />
+            </IconButton>
+            <InputBase
+              className={classes.input}
+              placeholder="Search symbols from AKShare"
+              onChange={(event) => setSymbolId(event.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <IconButton
+              className={classes.iconButton}
+              aria-label="search"
+              onClick={() => {
+                setSearchId(symbolId);
+                // console.log("Submit Button Click!, searchId = ", searchId);
+              }}
             >
-              <MenuItem value={"AAPL"}>AAPL</MenuItem>
-              <MenuItem value={"AMZN"}>AMZN</MenuItem>
-              <MenuItem value={"FB"}>FB</MenuItem>
-              <MenuItem value={"GOOG"}>GOOG</MenuItem>
-              <MenuItem value={"LK"}>LK</MenuItem>
-              <MenuItem value={"MSFT"}>MSFT</MenuItem>
-              <MenuItem value={"NFLX"}>NFLX</MenuItem>
-              <MenuItem value={"SNE"}>SNE</MenuItem>
-              <MenuItem value={"TLSA"}>TLSA</MenuItem>
-              <MenuItem value={"TSLA"}>TSLA</MenuItem>
-            </Select>
-          </FormControl>
-        </Paper>
+              <SearchIcon />
+            </IconButton>
+            <Divider className={classes.divider} orientation="vertical" />
+            <IconButton
+              // color="primary"
+              className={classes.iconButton}
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleHelperClick}
+            >
+              <HelpOutlineIcon />
+            </IconButton>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleHelperClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <Typography className={classes.typography}>
+                Search any stock you like! <br />
+                And change chart type by Select <br />
+                Data Source: AKShare
+              </Typography>
+            </Popover>
+            <Divider className={classes.divider} orientation="vertical" />
+            <IconButton
+              // color="primary"
+              className={classes.iconButton}
+              aria-label="chart_type"
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleHeightHelperClick}
+            >
+              <ZoomOutMapIcon />
+            </IconButton>
+            <Divider className={classes.divider} orientation="vertical" />
+            <FormControl className={classes.formControl}>
+              <Select
+                labelId="demo-controlled-open-select-label"
+                id="demo-controlled-open-select"
+                value={searchId}
+                displayEmpty
+                onChange={handleSearchIdChange}
+              >
+                <MenuItem value={searchId}>CUSTOM</MenuItem>
+                <MenuItem value={"AAPL"}>AAPL</MenuItem>
+                <MenuItem value={"AMZN"}>AMZN</MenuItem>
+                <MenuItem value={"FB"}>FB</MenuItem>
+                <MenuItem value={"GOOG"}>GOOG</MenuItem>
+                <MenuItem value={"LK"}>LK</MenuItem>
+                <MenuItem value={"MSFT"}>MSFT</MenuItem>
+                <MenuItem value={"NFLX"}>NFLX</MenuItem>
+                <MenuItem value={"SNE"}>SNE</MenuItem>
+                <MenuItem value={"TLSA"}>TLSA</MenuItem>
+                <MenuItem value={"TSLA"}>TSLA</MenuItem>
+              </Select>
+            </FormControl>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={11}>
+          <Paper>
+            <SignalChart
+              symbol={searchId}
+              amount={time}
+              height={height}
+            ></SignalChart>
+          </Paper>
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={11}>
-        <Paper className={classes.tabs}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab label="1 Month" />
-            <Tab label="3 Month" />
-            <Tab label="6 Month" />
-          </Tabs>
-          <SignalChart symbol={searchId} amount={time}></SignalChart>
-        </Paper>
-      </Grid>
-    </Grid>
+    </div>
   );
 };
