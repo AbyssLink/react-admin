@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
+import { getTail } from "./utils";
 
 export class SplineChart extends Component {
-  getTail = (list, amount) => {
-    if (amount >= 300) {
-      return list;
-    } else {
-      return list.slice(list.length - amount, list.length);
-    }
-  };
-
   constructor(props) {
     super(props);
 
@@ -17,15 +10,15 @@ export class SplineChart extends Component {
       series: [
         {
           name: "fast signal",
-          data: this.getTail(props.data["fast"], props.amount),
+          data: getTail(props.data["fast"], props.amount),
         },
         {
           name: "slow signal",
-          data: this.getTail(props.data["slow"], props.amount),
+          data: getTail(props.data["slow"], props.amount),
         },
         {
           name: "close",
-          data: this.getTail(props.data["close"], props.amount),
+          data: getTail(props.data["close"], props.amount),
         },
       ],
       options: {
@@ -44,7 +37,7 @@ export class SplineChart extends Component {
         },
         xaxis: {
           type: "datetime",
-          categories: this.getTail(props.data["date"], props.amount),
+          categories: getTail(props.data["date"], props.amount),
         },
         tooltip: {
           x: {
@@ -57,20 +50,23 @@ export class SplineChart extends Component {
 
   // componentWillReceiveProps is not recommended, use getDerivedStateFromProps as an alternative
   static getDerivedStateFromProps = (props, state) => {
-    if (props.title !== state.options.title.text) {
+    if (
+      props.title !== state.options.title.text ||
+      props.amount !== state.series[0].data.length
+    ) {
       return {
         series: [
           {
             ...state.series[0].name,
-            data: this.getTail(props.data["fast"], props.amount),
+            data: getTail(props.data["fast"], props.amount),
           },
           {
             ...state.series[1].name,
-            data: this.getTail(props.data["slow"], props.amount),
+            data: getTail(props.data["slow"], props.amount),
           },
           {
             ...state.series[2].name,
-            data: this.getTail(props.data["close"], props.amount),
+            data: getTail(props.data["close"], props.amount),
           },
         ],
         options: {
@@ -82,7 +78,7 @@ export class SplineChart extends Component {
           },
           xaxis: {
             ...state.options.xaxis.type,
-            categories: this.getTail(props.data["date"], props.amount),
+            categories: getTail(props.data["date"], props.amount),
           },
           ...state.options.tooltip,
         },
