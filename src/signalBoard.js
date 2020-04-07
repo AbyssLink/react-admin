@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import React, { useState } from "react";
 import { Title } from "react-admin";
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   divRoot: {
-    marginTop: theme.spacing(2),
+    // marginTop: theme.spacing(2),
   },
   typography: {
     padding: theme.spacing(2),
@@ -64,8 +65,9 @@ export const SignalBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
   const [searchId, setSearchId] = useState("AAPL");
-  const [time, setTime] = useState(80);
+  const [time, setTime] = useState(60);
   const [height, setHeight] = React.useState(315);
+  const [gridSize, setGridSize] = React.useState(6);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleHeightHelperClick = (event) => {
@@ -73,6 +75,14 @@ export const SignalBoard = (props) => {
       setHeight(680);
     } else {
       setHeight(315);
+    }
+  };
+
+  const handleGridChangerClick = (event) => {
+    if (gridSize === 6) {
+      setGridSize(12);
+    } else {
+      setGridSize(6);
     }
   };
 
@@ -102,7 +112,7 @@ export const SignalBoard = (props) => {
     <div className={classes.divRoot}>
       <Title title="Strategy to apply on stock" />
       <Grid container justify="center" spacing={2}>
-        <Grid item xs={12} sm={11}>
+        <Grid item xs={12} sm={12}>
           <Paper component="form" className={classes.root}>
             <IconButton
               color="primary"
@@ -171,6 +181,17 @@ export const SignalBoard = (props) => {
               <ZoomOutMapIcon />
             </IconButton>
             <Divider className={classes.divider} orientation="vertical" />
+            <IconButton
+              // color="primary"
+              className={classes.iconButton}
+              aria-label="chart_type"
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleGridChangerClick}
+            >
+              <ViewComfyIcon />
+            </IconButton>
+            <Divider className={classes.divider} orientation="vertical" />
             <FormControl className={classes.formControl}>
               <Select
                 labelId="demo-controlled-open-select-label"
@@ -194,11 +215,12 @@ export const SignalBoard = (props) => {
             </FormControl>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12}>
           <SignalChart
             symbol={searchId}
             amount={time}
             height={height}
+            gridSize={gridSize}
           ></SignalChart>
         </Grid>
       </Grid>

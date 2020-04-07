@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Chart from "react-apexcharts";
+import ReactApexChart from "react-apexcharts";
 import { getTail } from "./utils";
 
 export class SplineChart extends Component {
@@ -31,6 +31,9 @@ export class SplineChart extends Component {
         },
         stroke: {
           curve: "smooth",
+        },
+        theme: {
+          palette: "palette1",
         },
         title: {
           text: props.title + " SIGNAL",
@@ -82,6 +85,7 @@ export class SplineChart extends Component {
           },
           ...state.options.dataLabels,
           ...state.options.stroke,
+          ...state.options.theme,
           title: {
             text: props.title + " SIGNAL",
             ...state.options.title.align,
@@ -104,10 +108,11 @@ export class SplineChart extends Component {
   render() {
     return (
       <div id="chart">
-        <Chart
+        <ReactApexChart
           options={this.state.options}
           series={this.state.series}
           type="line"
+          width={"100%"}
           height={this.props.height}
         />
       </div>
