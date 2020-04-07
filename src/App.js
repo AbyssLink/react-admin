@@ -1,16 +1,15 @@
 import GroupIcon from "@material-ui/icons/Group";
 import InfoIcon from "@material-ui/icons/Info";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
-import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import TodayIcon from "@material-ui/icons/Today";
-import jsonServerProvider from "ra-data-json-server";
+import simpleRestProvider from "ra-data-json-server";
 import React from "react";
 import { Admin, Login, Resource } from "react-admin";
 import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
 import { SignalBoard } from "./signalBoard";
 import { StockHistory } from "./stockHistory";
-import { UserList } from "./users";
+import { UserCreate, UserEdit, UserList } from "./users";
 
 const MyLoginPage = () => (
   <Login
@@ -21,7 +20,7 @@ const MyLoginPage = () => (
   />
 );
 
-const dataProvider = jsonServerProvider("http://127.0.0.1:5000");
+const dataProvider = simpleRestProvider("http://127.0.0.1:5000");
 const App = () => (
   <Admin
     dashboard={Dashboard}
@@ -32,8 +31,14 @@ const App = () => (
     {/* <Resource name="posts" list={DashHome} /> */}
     <Resource name="History" list={StockHistory} icon={TodayIcon} />
     <Resource name="strategy" list={SignalBoard} icon={LocalMallIcon} />
-    <Resource name="photo" list={UserList} icon={PhotoLibraryIcon} />
-    <Resource name="users" list={UserList} icon={GroupIcon} />
+    {/* <Resource name="photo" list={UserList} icon={PhotoLibraryIcon} /> */}
+    <Resource
+      name="users"
+      list={UserList}
+      icon={GroupIcon}
+      edit={UserEdit}
+      create={UserCreate}
+    />
     <Resource name="info" list={Dashboard} icon={InfoIcon} />
   </Admin>
 );
