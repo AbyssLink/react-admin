@@ -70,8 +70,8 @@ export const StockHistory = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
   const [searchId, setSearchId] = useState("AAPL");
-  const [value, setValue] = React.useState(0);
-  const [time, setTime] = React.useState(5);
+  const [value, setValue] = React.useState(1);
+  const [time, setTime] = React.useState(21);
   const [height, setHeight] = React.useState(315);
   const [type, setType] = useState("candlestick");
   const [anchorEl, setAnchorEl] = React.useState(null);

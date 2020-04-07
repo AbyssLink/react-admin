@@ -5,6 +5,7 @@ import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
 import { ProfitChart } from "./profitChart";
 import { SplineChart } from "./splineChart";
+import { WealthCard } from "./wealthCard";
 import { WealthChart } from "./wealthChart";
 
 export const SignalChart = ({ symbol, amount, height, gridSize }) => {
@@ -14,6 +15,14 @@ export const SignalChart = ({ symbol, amount, height, gridSize }) => {
     console.log(amount);
   };
  */
+
+  const formatGridSize = (gridSize) => {
+    if (gridSize == 6) {
+      return 9;
+    } else if (gridSize == 12) {
+      return 12;
+    }
+  };
 
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
@@ -53,7 +62,15 @@ export const SignalChart = ({ symbol, amount, height, gridSize }) => {
     return (
       <div>
         <Grid container justify="center" spacing={2}>
-          <Grid item xs={12} sm={gridSize}>
+          <Grid item xs={12} sm={3}>
+            <WealthCard
+              title={symbol}
+              data={data}
+              amount={amount}
+              height={315}
+            ></WealthCard>
+          </Grid>
+          <Grid item xs={12} sm={formatGridSize(gridSize)}>
             <Card>
               <CardContent>
                 <SplineChart
