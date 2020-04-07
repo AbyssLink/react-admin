@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   divRoot: {
-    marginTop: theme.spacing(1),
+    // marginTop: theme.spacing(1),
   },
   typography: {
     padding: theme.spacing(2),
@@ -127,7 +127,7 @@ export const StockHistory = (props) => {
     <div className={classes.divRoot}>
       <Title title="Query Historical Stock Data" />
       <Grid container justify="center" spacing={2}>
-        <Grid item xs={12} sm={11}>
+        <Grid item xs={12} sm={12}>
           <Paper component="form" className={classes.root}>
             {/* <IconButton
               color="primary"
@@ -245,7 +245,7 @@ export const StockHistory = (props) => {
             </FormControl>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={11}>
+        <Grid item xs={12} sm={12}>
           <Paper className={classes.tabs}>
             <Tabs
               value={value}
@@ -287,7 +287,7 @@ export const StockHistory = (props) => {
         <Grid item xs={12} sm={4}>
           <StockInfo symbol={searchId}></StockInfo>
         </Grid>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} sm={8}>
           <StockHistoryList symbol={searchId}></StockHistoryList>
         </Grid>
       </Grid>

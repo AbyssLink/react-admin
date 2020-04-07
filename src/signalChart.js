@@ -7,13 +7,14 @@ import { ProfitChart } from "./profitChart";
 import { SplineChart } from "./splineChart";
 import { WealthChart } from "./wealthChart";
 
-export const SignalChart = ({ symbol, amount, height }) => {
+export const SignalChart = ({ symbol, amount, height, gridSize }) => {
   /*   const logData = (data) => {
     console.log("data = ", data);
     console.log(symbol);
     console.log(amount);
   };
  */
+
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
     resource: "ploy-signal",
@@ -52,7 +53,7 @@ export const SignalChart = ({ symbol, amount, height }) => {
     return (
       <div>
         <Grid container justify="center" spacing={2}>
-          <Grid item xs={12} sm={11}>
+          <Grid item xs={12} sm={gridSize}>
             <Card>
               <CardContent>
                 <SplineChart
@@ -64,7 +65,7 @@ export const SignalChart = ({ symbol, amount, height }) => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={11}>
+          <Grid item xs={12} sm={gridSize}>
             <Card>
               <CardContent>
                 <ProfitChart
@@ -76,7 +77,7 @@ export const SignalChart = ({ symbol, amount, height }) => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={11}>
+          <Grid item xs={12} sm={gridSize}>
             <Card>
               <CardContent>
                 <WealthChart
