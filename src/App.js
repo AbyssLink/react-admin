@@ -2,7 +2,7 @@ import GroupIcon from "@material-ui/icons/Group";
 import InfoIcon from "@material-ui/icons/Info";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import TodayIcon from "@material-ui/icons/Today";
-import simpleRestProvider from "ra-data-json-server";
+import simpleRestProvider from "ra-data-simple-rest";
 import React from "react";
 import { Admin, Login, Resource } from "react-admin";
 import authProvider from "./authProvider";
