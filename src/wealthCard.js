@@ -31,8 +31,12 @@ const useStyles = makeStyles((theme) => ({
     // marginBottom: 10,
     fontSize: 18,
   },
-  bold: {
+  boldLarge: {
     fontWeight: 500,
+    fontSize: 36,
+  },
+  bold: {
+    fontWeight: 550,
   },
 }));
 
@@ -58,13 +62,13 @@ export const WealthCard = (props) => {
         >
           Word of the Day
         </Typography> */}
-          <Typography variant="h3" component="h2">
+          <Typography className={classes.bold} variant="h5" component="h2">
             {props.title}
           </Typography>
-          <Typography className={classes.bold} variant="h2" component="h2">
+          <Typography className={classes.boldLarge} component="h2">
             $ {props.data["wealth"].slice(-1)}
           </Typography>
-          <Grid container alignItems="center">
+          <Grid container>
             <Grid item xs>
               <Typography className={classes.pos} theme={myTheme}>
                 Highest:
@@ -76,7 +80,7 @@ export const WealthCard = (props) => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container alignItems="center">
+          <Grid container>
             <Grid item xs>
               <Typography className={classes.pos} theme={myTheme}>
                 Lowest:
@@ -88,7 +92,7 @@ export const WealthCard = (props) => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container alignItems="center">
+          <Grid container>
             <Grid item xs>
               <Typography className={classes.pos} theme={myTheme}>
                 Time
@@ -103,6 +107,8 @@ export const WealthCard = (props) => {
           <Typography variant="body1" component="p">
             Strategy using signal value.
             <br />
+            Reference to coursera.
+            <br />
           </Typography>
           <Typography variant="body1" component="p">
             Click button to read document.
@@ -110,10 +116,10 @@ export const WealthCard = (props) => {
           </Typography>
         </CardContent>
         <CardActions className={classes.actions}>
-          <Button size="small" alignItems="flex-end" color="primary">
+          <Button size="small" color="primary">
             Share
           </Button>
-          <Button size="small" alignItems="flex-end" color="primary">
+          <Button size="small" color="primary">
             Learn More
           </Button>
         </CardActions>
