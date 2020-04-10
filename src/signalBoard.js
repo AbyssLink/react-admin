@@ -110,7 +110,7 @@ export const SignalBoard = (props) => {
   return (
     <div className={classes.divRoot}>
       <Title title="Strategy to apply on stock" />
-      <Grid container justify="center" spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
           <Paper component="form" className={classes.root}>
             <IconButton
