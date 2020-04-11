@@ -39,7 +39,7 @@ export const ImgMediaCard = ({ img, title, description, link, date }) => {
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="295"
+          height="200"
           // image="https://www.google.com/logos/doodles/2019/celebrating-wellies-4652654377566208-2xa.gif"
           image={img}
           title="Contemplative Reptile"
