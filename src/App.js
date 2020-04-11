@@ -1,17 +1,25 @@
+import { createMuiTheme } from "@material-ui/core/styles";
 import GroupIcon from "@material-ui/icons/Group";
-import InfoIcon from "@material-ui/icons/Info";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
+import SettingsIcon from "@material-ui/icons/Settings";
 import TodayIcon from "@material-ui/icons/Today";
 import simpleRestProvider from "ra-data-simple-rest";
 import React from "react";
 import { Admin, Login, Resource } from "react-admin";
 import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
+import { MyLayout } from "./MyLayout";
 import { NewsShow } from "./newsShow";
 import { SignalBoard } from "./signalBoard";
 import { StockHistory } from "./stockHistory";
 import { UserCreate, UserEdit, UserList } from "./users";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "light", // Switching the dark mode on is a single property value change.
+  },
+});
 
 const MyLoginPage = () => (
   <Login
@@ -26,8 +34,10 @@ const MyLoginPage = () => (
 const dataProvider = simpleRestProvider("http://127.0.0.1:5000");
 const App = () => (
   <Admin
+    // theme={theme}
     dashboard={Dashboard}
     loginPage={MyLoginPage}
+    layout={MyLayout}
     authProvider={authProvider}
     dataProvider={dataProvider}
   >
@@ -42,7 +52,7 @@ const App = () => (
       edit={UserEdit}
       create={UserCreate}
     />
-    <Resource name="info" list={Dashboard} icon={InfoIcon} />
+    <Resource name="settings" list={Dashboard} icon={SettingsIcon} />
   </Admin>
 );
 

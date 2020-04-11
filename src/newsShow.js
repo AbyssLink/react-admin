@@ -1,6 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import { Error, Loading, useQueryWithStore } from "react-admin";
+import { Error, Loading, Title, useQueryWithStore } from "react-admin";
 import { ImgMediaCard } from "./newsCard";
 
 export const NewsShow = (props) => {
@@ -34,9 +34,12 @@ export const NewsShow = (props) => {
       </Grid>
     ));
     return (
-      <Grid container spacing={2}>
-        {newsCards}
-      </Grid>
+      <div>
+        <Title title="Financial News" />
+        <Grid container spacing={2}>
+          {newsCards}
+        </Grid>
+      </div>
     );
   }
 };
