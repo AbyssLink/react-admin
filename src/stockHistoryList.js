@@ -2,6 +2,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
+import { ErrorCard } from "./ErrorCard";
 import { SimpleTable } from "./table";
 
 export const StockHistoryList = (props) => {
@@ -33,11 +34,7 @@ export const StockHistoryList = (props) => {
   }
   if (data !== undefined) {
     if (data["success"] === false) {
-      return (
-        <Card>
-          <CardContent>ERROR! No such stock!</CardContent>
-        </Card>
-      );
+      return <ErrorCard></ErrorCard>;
     }
     return <SimpleTable data={data} symbol={props.symbol}></SimpleTable>;
   }

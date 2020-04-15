@@ -2,6 +2,7 @@ import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
 import { AreaChart } from "./areaChart";
 import { CandleStick } from "./candleStick";
+import { ErrorCard } from "./ErrorCard";
 import { LineChart } from "./lineChart";
 
 export const StockChart = (props) => {
@@ -22,7 +23,7 @@ export const StockChart = (props) => {
     return <Error />;
   }
   if (data["success"] === false) {
-    return <div>ERROR! No such stock!</div>;
+    return <ErrorCard></ErrorCard>;
   }
   if (props.type === "candlestick") {
     return (
