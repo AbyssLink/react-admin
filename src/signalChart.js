@@ -3,6 +3,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
+import { ErrorCard } from "./ErrorCard";
 import { ProfitChart } from "./profitChart";
 import { SplineChart } from "./splineChart";
 import { WealthCard } from "./wealthCard";
@@ -53,11 +54,7 @@ export const SignalChart = ({ symbol, amount, height, gridSize }) => {
   if (data !== undefined) {
     // logData(data);
     if (data["success"] === false) {
-      return (
-        <Card>
-          <CardContent>ERROR! No such stock!</CardContent>
-        </Card>
-      );
+      return <ErrorCard></ErrorCard>;
     }
     return (
       <div>
