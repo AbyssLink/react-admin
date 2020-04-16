@@ -64,7 +64,7 @@ export const SignalBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
   const [searchId, setSearchId] = useState("AAPL");
-  const [time, setTime] = useState(60);
+  const [time] = useState(60);
   const [height, setHeight] = React.useState(315);
   const [gridSize, setGridSize] = React.useState(6);
   const [anchorEl, setAnchorEl] = React.useState(null);

@@ -1,64 +1,55 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import { getTail } from "./utils";
+import { getTail } from "../utils";
 
-export class ProfitChart extends React.Component {
+export class SplineChart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       series: [
         {
-          name: "Profit",
-          data: getTail(props.data["profit"], props.amount),
+          name: "CLOSE",
+          data: getTail(props.data["close"], props.amount),
+        },
+        {
+          name: "FAST SIGNAL",
+          data: getTail(props.data["fast"], props.amount),
+        },
+        {
+          name: "SLOW SIGNAL",
+          data: getTail(props.data["slow"], props.amount),
         },
       ],
       options: {
         chart: {
-          type: "bar",
+          id: props.title,
+          type: "line",
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: "smooth",
+        },
+        theme: {
+          palette: "palette1",
         },
         title: {
-          text: "PROFIT",
+          text: props.title + " SIGNAL",
           align: "left",
           style: {
             fontSize: "20px",
             fontWeight: "bold",
           },
         },
-        plotOptions: {
-          bar: {
-            colors: {
-              ranges: [
-                {
-                  from: -200,
-                  to: -21,
-                  color: "#F15B46",
-                },
-                {
-                  from: -20,
-                  to: 0,
-                  color: "#FEB019",
-                },
-              ],
-            },
-            columnWidth: "80%",
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        yaxis: {
-          labels: {
-            formatter: function (y) {
-              return y.toFixed(0) + "%";
-            },
-          },
-        },
         xaxis: {
           type: "datetime",
           categories: getTail(props.data["date"], props.amount),
-          labels: {
-            rotate: -90,
+        },
+        tooltip: {
+          x: {
+            format: "yyyy/MM/dd",
           },
         },
       },
@@ -76,15 +67,30 @@ export class ProfitChart extends React.Component {
         series: [
           {
             ...state.series[0].name,
-            data: getTail(props.data["profit"], props.amount),
+            data: getTail(props.data["close"], props.amount),
+          },
+          {
+            ...state.series[1].name,
+            data: getTail(props.data["fast"], props.amount),
+          },
+          {
+            ...state.series[2].name,
+            data: getTail(props.data["slow"], props.amount),
           },
         ],
         options: {
-          ...state.options.chart,
-          ...state.options.title,
-          ...state.options.plotOptions,
+          chart: {
+            id: props.title,
+            ...state.options.type,
+          },
           ...state.options.dataLabels,
-          ...state.options.yaxis,
+          ...state.options.stroke,
+          ...state.options.theme,
+          title: {
+            text: props.title + " SIGNAL",
+            ...state.options.title.align,
+            ...state.options.title.style,
+          },
           xaxis: {
             ...state.options.xaxis.type,
             categories: getTail(props.data["date"], props.amount),
@@ -105,7 +111,8 @@ export class ProfitChart extends React.Component {
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
-          type="bar"
+          type="line"
+          width={"100%"}
           height={this.props.height}
         />
       </div>
