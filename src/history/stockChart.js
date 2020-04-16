@@ -2,7 +2,7 @@ import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
 import { AreaChart } from "./areaChart";
 import { CandleStick } from "./candleStick";
-import { ErrorCard } from "./ErrorCard";
+import { ErrorCard } from "../ErrorCard";
 import { LineChart } from "./lineChart";
 
 export const StockChart = (props) => {

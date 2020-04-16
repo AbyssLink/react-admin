@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import { getTail } from "./utils";
+import { getTail } from "../utils";
 
-export class AreaChart extends Component {
+export class LineChart extends Component {
   constructor(props) {
     super(props);
 
@@ -20,6 +20,9 @@ export class AreaChart extends Component {
         },
         dataLabels: {
           enabled: false,
+        },
+        stroke: {
+          curve: "smooth",
         },
         title: {
           text: props.title,
@@ -62,6 +65,7 @@ export class AreaChart extends Component {
             ...state.options.chart.type,
           },
           ...state.options.dataLabels,
+          ...state.options.stroke,
           title: {
             text: props.title,
             ...state.options.title.align,
@@ -82,7 +86,7 @@ export class AreaChart extends Component {
       <Chart
         options={this.state.options}
         series={this.state.series}
-        type="area"
+        type="line"
         width={"100%"}
         height={this.props.height}
       />

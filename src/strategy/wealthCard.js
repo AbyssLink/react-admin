@@ -49,7 +49,6 @@ const myTheme = createMuiTheme({
 
 export const WealthCard = (props) => {
   const classes = useStyles(props);
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <div>

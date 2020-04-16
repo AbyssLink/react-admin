@@ -1,24 +1,16 @@
 import React, { Component } from "react";
-import ReactApexChart from "react-apexcharts";
-import { getTail } from "./utils";
+import Chart from "react-apexcharts";
+import { getTail } from "../utils";
 
-export class SplineChart extends Component {
+export class WealthChart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       series: [
         {
-          name: "CLOSE",
-          data: getTail(props.data["close"], props.amount),
-        },
-        {
-          name: "FAST SIGNAL",
-          data: getTail(props.data["fast"], props.amount),
-        },
-        {
-          name: "SLOW SIGNAL",
-          data: getTail(props.data["slow"], props.amount),
+          name: "WEALTH",
+          data: getTail(props.data["wealth"], props.amount),
         },
       ],
       options: {
@@ -32,11 +24,8 @@ export class SplineChart extends Component {
         stroke: {
           curve: "smooth",
         },
-        theme: {
-          palette: "palette1",
-        },
         title: {
-          text: props.title + " SIGNAL",
+          text: "WEALTH",
           align: "left",
           style: {
             fontSize: "20px",
@@ -67,15 +56,7 @@ export class SplineChart extends Component {
         series: [
           {
             ...state.series[0].name,
-            data: getTail(props.data["close"], props.amount),
-          },
-          {
-            ...state.series[1].name,
-            data: getTail(props.data["fast"], props.amount),
-          },
-          {
-            ...state.series[2].name,
-            data: getTail(props.data["slow"], props.amount),
+            data: getTail(props.data["wealth"], props.amount),
           },
         ],
         options: {
@@ -85,12 +66,7 @@ export class SplineChart extends Component {
           },
           ...state.options.dataLabels,
           ...state.options.stroke,
-          ...state.options.theme,
-          title: {
-            text: props.title + " SIGNAL",
-            ...state.options.title.align,
-            ...state.options.title.style,
-          },
+          ...state.options.title,
           xaxis: {
             ...state.options.xaxis.type,
             categories: getTail(props.data["date"], props.amount),
@@ -108,11 +84,10 @@ export class SplineChart extends Component {
   render() {
     return (
       <div id="chart">
-        <ReactApexChart
+        <Chart
           options={this.state.options}
           series={this.state.series}
           type="line"
-          width={"100%"}
           height={this.props.height}
         />
       </div>

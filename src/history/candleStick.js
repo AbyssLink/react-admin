@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import { getTail } from "./utils";
+import { getTail } from "../utils";
 
-export class LineChart extends Component {
+export class CandleStick extends Component {
   constructor(props) {
     super(props);
 
@@ -20,9 +20,6 @@ export class LineChart extends Component {
         },
         dataLabels: {
           enabled: false,
-        },
-        stroke: {
-          curve: "smooth",
         },
         title: {
           text: props.title,
@@ -65,7 +62,6 @@ export class LineChart extends Component {
             ...state.options.chart.type,
           },
           ...state.options.dataLabels,
-          ...state.options.stroke,
           title: {
             text: props.title,
             ...state.options.title.align,
@@ -86,7 +82,7 @@ export class LineChart extends Component {
       <Chart
         options={this.state.options}
         series={this.state.series}
-        type="line"
+        type="candlestick"
         width={"100%"}
         height={this.props.height}
       />

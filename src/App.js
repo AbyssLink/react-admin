@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+// import { createMuiTheme } from "@material-ui/core/styles";
 import GroupIcon from "@material-ui/icons/Group";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
@@ -10,16 +10,16 @@ import { Admin, Login, Resource } from "react-admin";
 import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
 import { MyLayout } from "./MyLayout";
-import { NewsShow } from "./newsShow";
-import { SignalBoard } from "./signalBoard";
-import { StockHistory } from "./stockHistory";
-import { UserCreate, UserEdit, UserList } from "./users";
+import { NewsShow } from "./news/newsShow";
+import { SignalBoard } from "./strategy/signalBoard";
+import { StockHistory } from "./history/stockHistory";
+import { UserCreate, UserEdit, UserList } from "./user/users";
 
-const theme = createMuiTheme({
+/* const theme = createMuiTheme({
   palette: {
     type: "light", // Switching the dark mode on is a single property value change.
   },
-});
+}); */
 
 const MyLoginPage = () => (
   <Login

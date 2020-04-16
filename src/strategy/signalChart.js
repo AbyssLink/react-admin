@@ -3,7 +3,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
-import { ErrorCard } from "./ErrorCard";
+import { ErrorCard } from "../ErrorCard";
 import { ProfitChart } from "./profitChart";
 import { SplineChart } from "./splineChart";
 import { WealthCard } from "./wealthCard";
