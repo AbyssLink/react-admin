@@ -11,6 +11,7 @@ import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
 import { MyLayout } from "./MyLayout";
 import { NewsShow } from "./news/newsShow";
+import { DistribBoard } from "./distribution/distribBoard";
 import { SignalBoard } from "./strategy/signalBoard";
 import { StockHistory } from "./history/stockHistory";
 import { UserCreate, UserEdit, UserList } from "./user/users";
@@ -44,7 +45,8 @@ const App = () => (
     {/* <Resource name="posts" list={DashHome} /> */}
     <Resource name="History" list={StockHistory} icon={TodayIcon} />
     <Resource name="news" list={NewsShow} icon={RssFeedIcon} />
-    <Resource name="strategy" list={SignalBoard} icon={LocalMallIcon} />
+    <Resource name="Moving Average" list={SignalBoard} icon={LocalMallIcon} />
+    <Resource name="Varations" list={DistribBoard} icon={LocalMallIcon} />
     <Resource
       name="users"
       list={UserList}
