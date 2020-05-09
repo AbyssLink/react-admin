@@ -1,9 +1,27 @@
 export default {
   // called when the user attempts to log in
-  login: ({ username }) => {
-    localStorage.setItem("username", username);
-    // accept all username/password combinations
-    return Promise.resolve();
+  login: ({ username, password }) => {
+    const request = new Request("http://127.0.0.1:5000/auth", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: new Headers({ "Content-Type": "application/json" }),
+    });
+    return fetch(request)
+      .then((response) => {
+        if (response.status < 200 || response.status >= 300) {
+          throw new Error(response.statusText);
+        }
+        if (response.status === 200) {
+          localStorage.setItem("username", username);
+          // accept all username/password combinations
+          return Promise.resolve();
+        } else {
+          return Promise.reject();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      });
   },
   // called when the user clicks on the logout button
   logout: () => {

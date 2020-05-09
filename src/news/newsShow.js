@@ -6,7 +6,7 @@ import { ImgMediaCard } from "./newsCard";
 export const NewsShow = (props) => {
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
-    resource: "google-news",
+    resource: "news",
     payload: {
       id: "test",
     },
