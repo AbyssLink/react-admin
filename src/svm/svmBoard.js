@@ -60,7 +60,6 @@ export const SVMBoard = (props) => {
   const [symbolId, setSymbolId] = useState("AAPL");
   const [days, setDays] = useState(220);
   const [searchId, setSearchId] = useState("AAPL|100");
-  const [gridSize, setGridSize] = React.useState(6);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleHelperClick = (event) => {
@@ -73,11 +72,6 @@ export const SVMBoard = (props) => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
-  const handleSearchIdChange = (event) => {
-    setSearchId(event.target.value);
-    console.log("SearchId = ", event.target.value);
-  };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {

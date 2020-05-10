@@ -1,7 +1,6 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { green, red } from "@material-ui/core/colors";
-import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
@@ -12,13 +11,9 @@ const formatTitle = (title) => {
   const days = title.split("|")[2];
 
   if (Number(title.split("|")[1]) > 0) {
-    return (
-      symbol + " stock  increase  " + ratio + "%" + "  in  " + days + "  days"
-    );
+    return symbol + " stock  increase  " + ratio + "%  in  " + days + "  days";
   } else {
-    return (
-      symbol + " stock  decrease  " + ratio + "%" + "  in  " + days + "  days"
-    );
+    return symbol + " stock  decrease  " + ratio + "%  in  " + days + "  days";
   }
 };
 
@@ -62,13 +57,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 550,
   },
 }));
-
-const myTheme = createMuiTheme({
-  palette: {
-    primary: green,
-    secondary: red,
-  },
-});
 
 export const VarCard = (props) => {
   const classes = useStyles(props);

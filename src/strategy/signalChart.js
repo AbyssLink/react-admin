@@ -17,14 +17,6 @@ export const SignalChart = ({ symbol, amount, height, gridSize }) => {
   };
  */
 
-  const formatGridSize = (gridSize) => {
-    if (gridSize === 6) {
-      return 9;
-    } else if (gridSize === 12) {
-      return 12;
-    }
-  };
-
   const { loaded, error, data } = useQueryWithStore({
     type: "getOne",
     resource: "ploy-signal",
