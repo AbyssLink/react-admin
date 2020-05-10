@@ -1,11 +1,10 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
 import { ErrorCard } from "../ErrorCard";
-import { PdfChart } from "./pdfChart";
 import { FreqChart } from "./freqChart";
+import { PdfChart } from "./pdfChart";
 
 export const DistribChart = ({ symbol, amount, height, gridSize }) => {
   const { loaded, error, data } = useQueryWithStore({

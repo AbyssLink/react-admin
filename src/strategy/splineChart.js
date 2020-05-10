@@ -36,7 +36,7 @@ export class SplineChart extends Component {
           palette: "palette1",
         },
         title: {
-          text: props.title + " SIGNAL",
+          text: "SIGNAL",
           align: "left",
           style: {
             fontSize: "20px",

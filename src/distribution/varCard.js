@@ -1,13 +1,10 @@
-import Button from "@material-ui/core/Button";
-import { Error, Loading, useQueryWithStore } from "react-admin";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { green, red } from "@material-ui/core/colors";
-import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
+import { Error, Loading, useQueryWithStore } from "react-admin";
 
 const formatTitle = (title) => {
   const symbol = title.split("|")[0];
@@ -15,9 +12,13 @@ const formatTitle = (title) => {
   const days = title.split("|")[2];
 
   if (Number(title.split("|")[1]) > 0) {
-    return symbol + "  increase  " + ratio + "%" + "  in  " + days + "  days";
+    return (
+      symbol + " stock  increase  " + ratio + "%" + "  in  " + days + "  days"
+    );
   } else {
-    return symbol + "  decrease  " + ratio + "%" + "  in  " + days + "  days";
+    return (
+      symbol + " stock  decrease  " + ratio + "%" + "  in  " + days + "  days"
+    );
   }
 };
 
