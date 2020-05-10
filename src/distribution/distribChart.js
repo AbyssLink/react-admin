@@ -12,6 +12,7 @@ export const DistribChart = ({ symbol, amount, height, gridSize }) => {
     type: "getOne",
     resource: "distrib-chart",
     payload: {
+      //FIXME: bad method
       id: symbol,
     },
   });

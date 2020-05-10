@@ -9,6 +9,27 @@ import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
+const formatTitle = (title) => {
+  const symbol = title.split("|")[0];
+  const ratio = Math.abs(title.split("|")[1] * 100);
+  const days = title.split("|")[2];
+
+  if (Number(title.split("|")[1]) > 0) {
+    return symbol + "  increase  " + ratio + "%" + "  in  " + days + "  days";
+  } else {
+    return symbol + "  decrease  " + ratio + "%" + "  in  " + days + "  days";
+  }
+};
+
+const getProb = (title, prob) => {
+  const ratio = title.split("|")[1] * 100;
+  if (ratio > 0) {
+    return 1 - prob;
+  } else {
+    return prob;
+  }
+};
+
 const useStyles = makeStyles((theme) => ({
   root: (props) => ({
     minHeight: props.height + 54,
@@ -54,6 +75,7 @@ export const VarCard = (props) => {
     type: "getOne",
     resource: "distrib-prob",
     payload: {
+      //FIXME: dirty method
       id: props.symbol,
     },
   });
@@ -88,10 +110,10 @@ export const VarCard = (props) => {
               Word of the Day
             </Typography> */}
           <Typography className={classes.bold} variant="h5" component="h2">
-            {props.symbol}
+            {formatTitle(props.symbol)}
           </Typography>
           <Typography className={classes.boldLarge} component="h2">
-            Probility is {data["prob"]}
+            Probility is {getProb(props.symbol, data["prob"])}
           </Typography>
         </CardContent>
       </Card>

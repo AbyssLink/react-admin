@@ -8,6 +8,29 @@ import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
+const formatTitle = (title) => {
+  const symbol = title.split("|")[0];
+  const fast = title.split("|")[1];
+  const slow = title.split("|")[2];
+  const days = title.split("|")[3];
+
+  return (
+    "1 share of " +
+    symbol +
+    " stock " +
+    " using " +
+    " fast signal = " +
+    fast +
+    ", " +
+    " slow signal = " +
+    slow +
+    ", " +
+    " in " +
+    days +
+    " days"
+  );
+};
+
 const useStyles = makeStyles((theme) => ({
   root: (props) => ({
     minHeight: props.height + 54,
@@ -62,7 +85,7 @@ export const WealthCard = (props) => {
           Word of the Day
         </Typography> */}
           <Typography className={classes.bold} variant="h5" component="h2">
-            {props.title}
+            {formatTitle(props.title)}
           </Typography>
           <Typography className={classes.boldLarge} component="h2">
             final wealth is $ {props.data["wealth"].slice(-1)}

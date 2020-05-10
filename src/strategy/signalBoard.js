@@ -63,7 +63,10 @@ const useStyles = makeStyles((theme) => ({
 export const SignalBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
-  const [searchId, setSearchId] = useState("AAPL");
+  const [fast, setFast] = useState(5);
+  const [slow, setSlow] = useState(20);
+  const [days, setDays] = useState(100);
+  const [searchId, setSearchId] = useState("AAPL|5|20|100");
   const [time] = useState(60);
   const [height, setHeight] = React.useState(315);
   const [gridSize, setGridSize] = React.useState(6);
@@ -103,7 +106,7 @@ export const SignalBoard = (props) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      setSearchId(symbolId);
+      setSearchId(symbolId + "|" + fast + "|" + slow + "|" + days);
       console.log("enter press here! ");
     }
   };
@@ -124,10 +127,33 @@ export const SignalBoard = (props) => {
             </IconButton>
             <InputBase
               className={classes.input}
-              placeholder="Search symbols from AKShare"
+              placeholder="Symbol"
               onChange={(event) => setSymbolId(event.target.value)}
               onKeyPress={handleKeyPress}
             />
+            <Divider className={classes.divider} orientation="vertical" />
+            <InputBase
+              className={classes.input}
+              placeholder="Fast_Signal"
+              onChange={(event) => setFast(event.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <Divider className={classes.divider} orientation="vertical" />
+
+            <InputBase
+              className={classes.input}
+              placeholder="Slow_Signal"
+              onChange={(event) => setSlow(event.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <Divider className={classes.divider} orientation="vertical" />
+            <InputBase
+              className={classes.input}
+              placeholder="Days"
+              onChange={(event) => setDays(event.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <Divider className={classes.divider} orientation="vertical" />
             <IconButton
               className={classes.iconButton}
               aria-label="search"
