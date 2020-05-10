@@ -4,7 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { Error, Loading, useQueryWithStore } from "react-admin";
 import { ErrorCard } from "../ErrorCard";
-import { ReturnChart } from "./returnChart";
+import { PdfChart } from "./pdfChart";
+import { FreqChart } from "./freqChart";
 
 export const DistribChart = ({ symbol, amount, height, gridSize }) => {
   const { loaded, error, data } = useQueryWithStore({
@@ -42,12 +43,18 @@ export const DistribChart = ({ symbol, amount, height, gridSize }) => {
       <div>
         <Card>
           <CardContent>
-            <ReturnChart
+            <FreqChart
               title={symbol}
               data={data}
               amount={amount}
               height={315}
-            ></ReturnChart>
+            ></FreqChart>
+            <PdfChart
+              title={symbol}
+              data={data}
+              amount={amount}
+              height={315}
+            ></PdfChart>
           </CardContent>
         </Card>
       </div>

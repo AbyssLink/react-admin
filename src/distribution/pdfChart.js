@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { getTail } from "../utils";
 
-export class ReturnChart extends React.Component {
+export class PdfChart extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,10 +15,10 @@ export class ReturnChart extends React.Component {
       ],
       options: {
         chart: {
-          type: "bar",
+          type: "line",
         },
         title: {
-          text: "distribution of log return",
+          text: "pdf of log return",
           align: "left",
           style: {
             fontSize: "20px",
@@ -100,7 +100,6 @@ export class ReturnChart extends React.Component {
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
-          type="bar"
           height={this.props.height}
         />
       </div>
