@@ -65,7 +65,6 @@ export const DistribBoard = (props) => {
   const [searchId, setSearchId] = useState("AAPL|0.15|120");
   const [time] = useState(60);
   const [height, setHeight] = React.useState(315);
-  const [gridSize, setGridSize] = React.useState(6);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleHeightHelperClick = (event) => {
@@ -73,14 +72,6 @@ export const DistribBoard = (props) => {
       setHeight(680);
     } else {
       setHeight(315);
-    }
-  };
-
-  const handleGridChangerClick = (event) => {
-    if (gridSize === 6) {
-      setGridSize(12);
-    } else {
-      setGridSize(6);
     }
   };
 
@@ -94,11 +85,6 @@ export const DistribBoard = (props) => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
-  const handleSearchIdChange = (event) => {
-    setSearchId(event.target.value);
-    console.log("SearchId = ", event.target.value);
-  };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -202,7 +188,6 @@ export const DistribBoard = (props) => {
             symbol={searchId}
             amount={time}
             height={height}
-            gridSize={gridSize}
           ></DistribChart>
         </Grid>
       </Grid>
