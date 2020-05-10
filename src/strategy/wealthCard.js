@@ -65,63 +65,18 @@ export const WealthCard = (props) => {
             {props.title}
           </Typography>
           <Typography className={classes.boldLarge} component="h2">
-            $ {props.data["wealth"].slice(-1)}
+            final wealth is $ {props.data["wealth"].slice(-1)}
           </Typography>
-          <Grid container>
-            <Grid item xs>
-              <Typography className={classes.pos} theme={myTheme}>
-                Highest:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography className={classes.pos} theme={myTheme}>
-                $ {Math.max(...props.data["wealth"])}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs>
-              <Typography className={classes.pos} theme={myTheme}>
-                Lowest:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography className={classes.pos} theme={myTheme}>
-                $ {Math.min(...props.data["wealth"])}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs>
-              <Typography className={classes.pos} theme={myTheme}>
-                Time
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography className={classes.pos} theme={myTheme}>
-                {props.data["wealth"].length} days
-              </Typography>
-            </Grid>
-          </Grid>
-          <Typography variant="body1" component="p">
-            Strategy using signal value.
-            <br />
-            Reference to coursera.
-            <br />
+          <Typography className={classes.pos} theme={myTheme}>
+            Highest = $ {Math.max(...props.data["wealth"])}
           </Typography>
-          <Typography variant="body1" component="p">
-            Click button to read document.
-            <br />
+          <Typography className={classes.pos} theme={myTheme}>
+            Lowest = $ {Math.min(...props.data["wealth"])}
+          </Typography>
+          <Typography className={classes.pos} theme={myTheme}>
+            Time = {props.data["wealth"].length} days
           </Typography>
         </CardContent>
-        <CardActions className={classes.actions}>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
       </Card>
     </div>
   );

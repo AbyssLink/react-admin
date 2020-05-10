@@ -88,7 +88,7 @@ export const VarCard = (props) => {
               Word of the Day
             </Typography> */}
           <Typography className={classes.bold} variant="h5" component="h2">
-            Normal distribution
+            {props.symbol}
           </Typography>
           <Typography className={classes.boldLarge} component="h2">
             Probility is {data["prob"]}

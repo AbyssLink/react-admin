@@ -59,15 +59,10 @@ export const SignalChart = ({ symbol, amount, height, gridSize }) => {
     return (
       <div>
         <Grid container justify="center" spacing={2}>
-          <Grid item xs={12} sm={3}>
-            <WealthCard
-              title={symbol}
-              data={data}
-              amount={amount}
-              height={315}
-            ></WealthCard>
+          <Grid item xs={12} sm={12}>
+            <WealthCard title={symbol} data={data} amount={amount}></WealthCard>
           </Grid>
-          <Grid item xs={12} sm={formatGridSize(gridSize)}>
+          <Grid item xs={12} sm={12}>
             <Card>
               <CardContent>
                 <SplineChart
@@ -76,24 +71,12 @@ export const SignalChart = ({ symbol, amount, height, gridSize }) => {
                   amount={amount}
                   height={height}
                 ></SplineChart>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={gridSize}>
-            <Card>
-              <CardContent>
                 <ProfitChart
                   title={symbol}
                   data={data}
                   amount={amount}
                   height={height}
                 ></ProfitChart>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={gridSize}>
-            <Card>
-              <CardContent>
                 <WealthChart
                   title={symbol}
                   data={data}
