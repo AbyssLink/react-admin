@@ -11,6 +11,7 @@ import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
 import { MyLayout } from "./MyLayout";
 import { NewsShow } from "./news/newsShow";
+import { SVMBoard } from "./svm/svmBoard";
 import { DistribBoard } from "./distribution/distribBoard";
 import { SignalBoard } from "./strategy/signalBoard";
 import { StockHistory } from "./history/stockHistory";
@@ -46,7 +47,8 @@ const App = () => (
     <Resource name="History" list={StockHistory} icon={TodayIcon} />
     <Resource name="news" list={NewsShow} icon={RssFeedIcon} />
     <Resource name="Moving Average" list={SignalBoard} icon={LocalMallIcon} />
-    <Resource name="Varations" list={DistribBoard} icon={LocalMallIcon} />
+    <Resource name="Distribution" list={DistribBoard} icon={LocalMallIcon} />
+    <Resource name="SVM" list={SVMBoard} icon={LocalMallIcon} />
     <Resource
       name="users"
       list={UserList}

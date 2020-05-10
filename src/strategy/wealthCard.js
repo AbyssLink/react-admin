@@ -1,9 +1,6 @@
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { green, red } from "@material-ui/core/colors";
-import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
@@ -96,9 +93,9 @@ export const WealthCard = (props) => {
           <Typography className={classes.pos} theme={myTheme}>
             Lowest = $ {Math.min(...props.data["wealth"])}
           </Typography>
-          <Typography className={classes.pos} theme={myTheme}>
+          {/*           <Typography className={classes.pos} theme={myTheme}>
             Time = {props.data["wealth"].length} days
-          </Typography>
+          </Typography> */}
         </CardContent>
       </Card>
     </div>

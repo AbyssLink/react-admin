@@ -1,6 +1,6 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { Title } from "react-admin";
 
@@ -8,8 +8,20 @@ export default () => (
   <div>
     <Title title="Homepage" />
     <Card>
-      <CardHeader title="Welcome to the administration" />
-      <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+      <CardContent>
+        <Typography variant="h5" component="h2">
+          Welcome to the Finance Helper
+        </Typography>
+        <Typography component="p">
+          Front-end:{" "}
+          <a href="https://github.com/AbyssLink/react-admin">react-admin</a>
+        </Typography>
+        <Typography component="p">
+          Back-end:{" "}
+          <a href="https://github.com/AbyssLink/stoks-app">stoks-app</a>
+        </Typography>
+        <div>Based on: Material-UI, React-admin, Flask</div>
+      </CardContent>
     </Card>
   </div>
 );

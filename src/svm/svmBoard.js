@@ -9,11 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
-import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import React, { useState } from "react";
 import { Title } from "react-admin";
-import { DistribChart } from "./distribChart";
-import { VarCard } from "./varCard";
+import { SVMChart } from "./svmChart";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -57,32 +55,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const DistribBoard = (props) => {
+export const SVMBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
-  const [ratio, setRatio] = useState(0.1);
   const [days, setDays] = useState(220);
-  const [searchId, setSearchId] = useState("AAPL|0.15|120");
-  const [time] = useState(60);
-  const [height, setHeight] = React.useState(315);
+  const [searchId, setSearchId] = useState("AAPL|100");
   const [gridSize, setGridSize] = React.useState(6);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleHeightHelperClick = (event) => {
-    if (height === 315) {
-      setHeight(680);
-    } else {
-      setHeight(315);
-    }
-  };
-
-  const handleGridChangerClick = (event) => {
-    if (gridSize === 6) {
-      setGridSize(12);
-    } else {
-      setGridSize(6);
-    }
-  };
 
   const handleHelperClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -102,7 +81,7 @@ export const DistribBoard = (props) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      setSearchId(symbolId + "|" + ratio + "|" + days);
+      setSearchId(symbolId + "|" + days);
       console.log("enter press here! ");
     }
   };
@@ -130,14 +109,7 @@ export const DistribBoard = (props) => {
             <Divider className={classes.divider} orientation="vertical" />
             <InputBase
               className={classes.input}
-              placeholder="Ratio"
-              onChange={(event) => setRatio(event.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <Divider className={classes.divider} orientation="vertical" />
-            <InputBase
-              className={classes.input}
-              placeholder="Days"
+              placeholder="Trains(<=250), Predicts = 300 - Trains"
               onChange={(event) => setDays(event.target.value)}
               onKeyPress={handleKeyPress}
             />
@@ -181,29 +153,13 @@ export const DistribBoard = (props) => {
                 Data Source: AKShare
               </Typography>
             </Popover>
-            <Divider className={classes.divider} orientation="vertical" />
-            <IconButton
-              // color="primary"
-              className={classes.iconButton}
-              aria-label="chart_type"
-              aria-describedby={id}
-              variant="contained"
-              onClick={handleHeightHelperClick}
-            >
-              <ZoomOutMapIcon />
-            </IconButton>
           </Paper>
         </Grid>
-        <Grid item xs={12}>
+        {/*  <Grid item xs={12}>
           <VarCard symbol={searchId}></VarCard>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
-          <DistribChart
-            symbol={searchId}
-            amount={time}
-            height={height}
-            gridSize={gridSize}
-          ></DistribChart>
+          <SVMChart symbol={searchId}></SVMChart>
         </Grid>
       </Grid>
     </div>
