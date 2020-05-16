@@ -268,13 +268,13 @@ export class PredictMap extends Component {
                 {
                   from: 1,
                   to: 1,
-                  name: "right",
+                  name: "increase",
                   color: "#00A100",
                 },
                 {
                   from: 0,
                   to: 0,
-                  name: "wrong",
+                  name: "decrease",
                   //   color: "#FF0000",
                   color: "#FFB200",
                 },
@@ -357,13 +357,13 @@ export class PredictMap extends Component {
                   {
                     from: 1,
                     to: 1,
-                    name: "right",
+                    name: "increase",
                     color: "#00A100",
                   },
                   {
                     from: 0,
                     to: 0,
-                    name: "wrong",
+                    name: "decrease",
                     // color: "#FF0000",
                     color: "#FFB200",
                   },
@@ -466,13 +466,13 @@ export class RealMap extends Component {
                 {
                   from: 1,
                   to: 1,
-                  name: "right",
+                  name: "increase",
                   color: "#00A100",
                 },
                 {
                   from: 0,
                   to: 0,
-                  name: "wrong",
+                  name: "decrease",
                   //   color: "#FF0000",
                   color: "#FFB200",
                 },
@@ -555,13 +555,13 @@ export class RealMap extends Component {
                   {
                     from: 1,
                     to: 1,
-                    name: "right",
+                    name: "increase",
                     color: "#00A100",
                   },
                   {
                     from: 0,
                     to: 0,
-                    name: "wrong",
+                    name: "decrease",
                     // color: "#FF0000",
                     color: "#FFB200",
                   },
