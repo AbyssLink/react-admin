@@ -9,12 +9,13 @@ import React from "react";
 import { Admin, Login, Resource } from "react-admin";
 import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
+import { DistribBoard } from "./distribution/distribBoard";
+import { StockHistory } from "./history/stockHistory";
 import { MyLayout } from "./MyLayout";
 import { NewsShow } from "./news/newsShow";
-import { SVMBoard } from "./svm/svmBoard";
-import { DistribBoard } from "./distribution/distribBoard";
+import { NewsRecommend } from "./news_recommend/newsRecommend";
 import { SignalBoard } from "./strategy/signalBoard";
-import { StockHistory } from "./history/stockHistory";
+import { SVMBoard } from "./svm/svmBoard";
 import { UserCreate, UserEdit, UserList } from "./user/users";
 
 /* const theme = createMuiTheme({
@@ -24,13 +25,7 @@ import { UserCreate, UserEdit, UserList } from "./user/users";
 }); */
 
 const MyLoginPage = () => (
-  <Login
-    // A random image that changes everyday
-    // backgroundImage="https://raw.githubusercontent.com/AbyssLink/pic/master/Konachan.com%20-%20299183%20sample.jpg"
-    // backgroundImage="https://i.pinimg.com/originals/f5/ab/04/f5ab049e7cbbc33cafea1b4123f0fe52.jpg"
-    // backgroundImage="https://3.bp.blogspot.com/-CLZFch--qWc/V3H-yD0TxcI/AAAAAAAAxgo/RyCsEDORDNU46Eodg1ImriceU-0835F7QCHM/s1600/clannad-after-story-robot.jpg"
-    backgroundImage="https://www.onimodglobal.com/wp-content/uploads/2017/11/Digital-Marketing-Trends-2018.jpeg"
-  />
+  <Login backgroundImage="https://www.onimodglobal.com/wp-content/uploads/2017/11/Digital-Marketing-Trends-2018.jpeg" />
 );
 
 const dataProvider = simpleRestProvider("http://127.0.0.1:5000");
@@ -46,6 +41,7 @@ const App = () => (
     {/* <Resource name="posts" list={DashHome} /> */}
     <Resource name="History" list={StockHistory} icon={TodayIcon} />
     <Resource name="news" list={NewsShow} icon={RssFeedIcon} />
+    <Resource name="Recommend News" list={NewsRecommend} icon={RssFeedIcon} />
     <Resource name="Moving Average" list={SignalBoard} icon={LocalMallIcon} />
     <Resource name="Distribution" list={DistribBoard} icon={LocalMallIcon} />
     <Resource name="SVM" list={SVMBoard} icon={LocalMallIcon} />

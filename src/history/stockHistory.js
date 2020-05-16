@@ -110,10 +110,10 @@ export const StockHistory = (props) => {
     console.log("Type = ", event.target.value);
   };
 
-  const handleSearchIdChange = (event) => {
-    setSearchId(event.target.value);
-    console.log("SearchId = ", event.target.value);
-  };
+  // const handleSearchIdChange = (event) => {
+  //   setSearchId(event.target.value);
+  //   console.log("SearchId = ", event.target.value);
+  // };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -221,27 +221,6 @@ export const StockHistory = (props) => {
               </Select>
             </FormControl>
             <Divider className={classes.divider} orientation="vertical" />
-            <FormControl className={classes.formControl}>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                value={searchId}
-                displayEmpty
-                onChange={handleSearchIdChange}
-              >
-                <MenuItem value={searchId}>CUSTOM</MenuItem>
-                <MenuItem value={"AAPL"}>AAPL</MenuItem>
-                <MenuItem value={"AMZN"}>AMZN</MenuItem>
-                <MenuItem value={"FB"}>FB</MenuItem>
-                <MenuItem value={"GOOG"}>GOOG</MenuItem>
-                <MenuItem value={"LK"}>LK</MenuItem>
-                <MenuItem value={"MSFT"}>MSFT</MenuItem>
-                <MenuItem value={"NFLX"}>NFLX</MenuItem>
-                <MenuItem value={"SNE"}>SNE</MenuItem>
-                <MenuItem value={"TLSA"}>TLSA</MenuItem>
-                <MenuItem value={"TSLA"}>TSLA</MenuItem>
-              </Select>
-            </FormControl>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12}>
