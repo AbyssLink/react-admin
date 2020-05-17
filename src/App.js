@@ -27,7 +27,7 @@ const MyLoginPage = () => (
   <Login backgroundImage="https://www.onimodglobal.com/wp-content/uploads/2017/11/Digital-Marketing-Trends-2018.jpeg" />
 );
 
-const dataProvider = simpleRestProvider("http://127.0.0.1:5000");
+const dataProvider = simpleRestProvider("http://localhost:5000");
 const App = () => (
   <Admin
     // theme={theme}
