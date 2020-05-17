@@ -1,4 +1,4 @@
-## 基于数据挖掘技术的金融数据分析系统设计与实现
+# 基于数据挖掘技术的金融数据分析系统设计与实现
 
 ## 项目概述
 
@@ -7,9 +7,9 @@
 
 ## 项目参考与地址
 
-在线演示：http://108.160.131.9:8080/
+在线演示：http://abysslink.xyz
 
-Presentation 演示：http://108.160.131.9:7732/
+Presentation 演示：http://abysslink.xyz:8080
 
 项目参考：https://www.coursera.org/learn/python-statistics-financial-analysis/home/welcome
 

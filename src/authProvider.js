@@ -1,7 +1,7 @@
 export default {
   // called when the user attempts to log in
   login: ({ username, password }) => {
-    const request = new Request("http://127.0.0.1:5000/auth", {
+    const request = new Request("http://localhost:5000/auth", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: new Headers({ "Content-Type": "application/json" }),
