@@ -5,7 +5,6 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
-import { Title } from "react-admin";
 import { NewsShow } from "./newsShow";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +46,6 @@ export const NewsRecommend = (props) => {
 
   return (
     <div className={classes.divRoot}>
-      <Title title="Query Historical Stock Data" />
       <Grid container justify="center" spacing={2}>
         <Grid item xs={12} sm={6}>
           <Paper component="form" className={classes.root}>

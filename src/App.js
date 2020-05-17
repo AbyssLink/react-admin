@@ -2,7 +2,6 @@
 import GroupIcon from "@material-ui/icons/Group";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
-import SettingsIcon from "@material-ui/icons/Settings";
 import TodayIcon from "@material-ui/icons/Today";
 import simpleRestProvider from "ra-data-simple-rest";
 import React from "react";
@@ -52,7 +51,7 @@ const App = () => (
       edit={UserEdit}
       create={UserCreate}
     />
-    <Resource name="settings" list={Dashboard} icon={SettingsIcon} />
+    {/* <Resource name="settings" list={Dashboard} icon={SettingsIcon} /> */}
   </Admin>
 );
 
