@@ -96,14 +96,14 @@ export const SVMBoard = (props) => {
             </IconButton>
             <InputBase
               className={classes.input}
-              placeholder="Symbol"
+              placeholder="Symbol(example: GOOG)"
               onChange={(event) => setSymbolId(event.target.value)}
               onKeyPress={handleKeyPress}
             />
             <Divider className={classes.divider} orientation="vertical" />
             <InputBase
               className={classes.input}
-              placeholder="Trains(<=250), Predicts = 300 - Trains"
+              placeholder="Trains(example: 100)((<=250), Predicts = 300 - Trains)"
               onChange={(event) => setDays(event.target.value)}
               onKeyPress={handleKeyPress}
             />

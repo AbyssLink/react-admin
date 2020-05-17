@@ -23,7 +23,7 @@ export const NewsShow = (props) => {
 
   if (data !== undefined) {
     const newsCards = data.map((d) => (
-      <Grid item xs={6} sm={3}>
+      <Grid item xs={12} sm={3}>
         <ImgMediaCard
           img={d["img"]}
           title={d["title"]}

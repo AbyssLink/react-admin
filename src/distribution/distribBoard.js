@@ -109,21 +109,21 @@ export const DistribBoard = (props) => {
             </IconButton>
             <InputBase
               className={classes.input}
-              placeholder="Symbol"
+              placeholder="Symbol(example: GOOG)"
               onChange={(event) => setSymbolId(event.target.value)}
               onKeyPress={handleKeyPress}
             />
             <Divider className={classes.divider} orientation="vertical" />
             <InputBase
               className={classes.input}
-              placeholder="Ratio"
+              placeholder="Ratio(example: 0.1, -0.1)"
               onChange={(event) => setRatio(event.target.value)}
               onKeyPress={handleKeyPress}
             />
             <Divider className={classes.divider} orientation="vertical" />
             <InputBase
               className={classes.input}
-              placeholder="Days"
+              placeholder="Days(example: 100)"
               onChange={(event) => setDays(event.target.value)}
               onKeyPress={handleKeyPress}
             />

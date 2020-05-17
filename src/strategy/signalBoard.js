@@ -127,14 +127,14 @@ export const SignalBoard = (props) => {
             </IconButton>
             <InputBase
               className={classes.input}
-              placeholder="Symbol"
+              placeholder="Symbol(example: GOOG)"
               onChange={(event) => setSymbolId(event.target.value)}
               onKeyPress={handleKeyPress}
             />
             <Divider className={classes.divider} orientation="vertical" />
             <InputBase
               className={classes.input}
-              placeholder="Fast_Signal"
+              placeholder="Fast_Signal(example: 5)"
               onChange={(event) => setFast(event.target.value)}
               onKeyPress={handleKeyPress}
             />
@@ -142,14 +142,14 @@ export const SignalBoard = (props) => {
 
             <InputBase
               className={classes.input}
-              placeholder="Slow_Signal"
+              placeholder="Slow_Signal(example: 20)"
               onChange={(event) => setSlow(event.target.value)}
               onKeyPress={handleKeyPress}
             />
             <Divider className={classes.divider} orientation="vertical" />
             <InputBase
               className={classes.input}
-              placeholder="Days"
+              placeholder="Days(example: 100)"
               onChange={(event) => setDays(event.target.value)}
               onKeyPress={handleKeyPress}
             />
