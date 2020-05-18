@@ -10,10 +10,10 @@ import authProvider from "./authProvider";
 import Dashboard from "./Dashboard";
 import { DistribBoard } from "./distribution/distribBoard";
 import { StockHistory } from "./history/stockHistory";
+import { SignalBoard } from "./moving_average/signalBoard";
 import { MyLayout } from "./MyLayout";
 import { NewsShow } from "./news/newsShow";
 import { NewsRecommend } from "./news_recommend/newsRecommend";
-import { SignalBoard } from "./strategy/signalBoard";
 import { SVMBoard } from "./svm/svmBoard";
 import { UserCreate, UserEdit, UserList } from "./user/users";
 
@@ -27,7 +27,7 @@ const MyLoginPage = () => (
   <Login backgroundImage="https://www.onimodglobal.com/wp-content/uploads/2017/11/Digital-Marketing-Trends-2018.jpeg" />
 );
 
-const dataProvider = simpleRestProvider("http://localhost:5000");
+const dataProvider = simpleRestProvider("https://flask.abysslink.xyz");
 const App = () => (
   <Admin
     // theme={theme}

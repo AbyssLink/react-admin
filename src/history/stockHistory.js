@@ -1,5 +1,7 @@
+import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
@@ -125,150 +127,154 @@ export const StockHistory = (props) => {
   return (
     <div className={classes.divRoot}>
       <Title title="Query Historical Stock Data" />
-      <Grid container justify="center" spacing={2}>
-        <Grid item xs={12} sm={12}>
-          <Paper component="form" className={classes.root}>
-            {/* <IconButton
+      <Box m={3}>
+        <Container maxWidth="lg">
+          <Grid container justify="center" spacing={2}>
+            <Grid item xs={12} sm={12}>
+              <Paper component="form" className={classes.root}>
+                {/* <IconButton
               color="primary"
               className={classes.iconButton}
               aria-label="chart_type"
             >
               <BarChartIcon />
             </IconButton> */}
-            <IconButton
-              color="primary"
-              className={classes.iconButton}
-              aria-label="links"
-              target="_blank"
-              href={"https://finance.yahoo.com/quote/" + searchId}
-            >
-              <TrendingUpIcon />
-            </IconButton>
-            <InputBase
-              className={classes.input}
-              placeholder="Search symbols from AKShare"
-              // inputProps={{ "aria-label": symbolId }}
-              onChange={(event) => setSymbolId(event.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <IconButton
-              className={classes.iconButton}
-              aria-label="search"
-              onClick={() => {
-                setSearchId(symbolId);
-                // console.log("Submit Button Click!, searchId = ", searchId);
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
-            <Divider className={classes.divider} orientation="vertical" />
-            <IconButton
-              // color="primary"
-              className={classes.iconButton}
-              aria-label="chart_type"
-              aria-describedby={id}
-              variant="contained"
-              onClick={handleHelperClick}
-            >
-              <HelpOutlineIcon />
-            </IconButton>
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleHelperClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "center",
-              }}
-            >
-              <Typography className={classes.typography}>
-                Search any stock you like! <br />
-                And change chart type by Select <br />
-                Data Source: AKShare
-              </Typography>
-            </Popover>
-            <Divider className={classes.divider} orientation="vertical" />
-            <IconButton
-              // color="primary"
-              className={classes.iconButton}
-              aria-label="chart_type"
-              aria-describedby={id}
-              variant="contained"
-              onClick={handleHeightHelperClick}
-            >
-              <ZoomOutMapIcon />
-            </IconButton>
-            <Divider className={classes.divider} orientation="vertical" />
-            <FormControl className={classes.formControl}>
-              {/* <InputLabel id="demo-controlled-open-select-label">
+                <IconButton
+                  color="primary"
+                  className={classes.iconButton}
+                  aria-label="links"
+                  target="_blank"
+                  href={"https://finance.yahoo.com/quote/" + searchId}
+                >
+                  <TrendingUpIcon />
+                </IconButton>
+                <InputBase
+                  className={classes.input}
+                  placeholder="Symbol(example: GOOG, AAPL, TSLA, JNJ, LK)"
+                  // inputProps={{ "aria-label": symbolId }}
+                  onChange={(event) => setSymbolId(event.target.value)}
+                  onKeyPress={handleKeyPress}
+                />
+                <IconButton
+                  className={classes.iconButton}
+                  aria-label="search"
+                  onClick={() => {
+                    setSearchId(symbolId);
+                    // console.log("Submit Button Click!, searchId = ", searchId);
+                  }}
+                >
+                  <SearchIcon />
+                </IconButton>
+                <Divider className={classes.divider} orientation="vertical" />
+                <IconButton
+                  // color="primary"
+                  className={classes.iconButton}
+                  aria-label="chart_type"
+                  aria-describedby={id}
+                  variant="contained"
+                  onClick={handleHelperClick}
+                >
+                  <HelpOutlineIcon />
+                </IconButton>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleHelperClose}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "center",
+                  }}
+                >
+                  <Typography className={classes.typography}>
+                    Search any stock you like! <br />
+                    And change chart type by Select <br />
+                    Data Source: AKShare
+                  </Typography>
+                </Popover>
+                <Divider className={classes.divider} orientation="vertical" />
+                <IconButton
+                  // color="primary"
+                  className={classes.iconButton}
+                  aria-label="chart_type"
+                  aria-describedby={id}
+                  variant="contained"
+                  onClick={handleHeightHelperClick}
+                >
+                  <ZoomOutMapIcon />
+                </IconButton>
+                <Divider className={classes.divider} orientation="vertical" />
+                <FormControl className={classes.formControl}>
+                  {/* <InputLabel id="demo-controlled-open-select-label">
                 Type
               </InputLabel> */}
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                value={type}
-                displayEmpty
-                onChange={handleTypeChange}
-              >
-                <MenuItem value={"candlestick"}>Candlestick</MenuItem>
-                <MenuItem value={"area"}>Area</MenuItem>
-                <MenuItem value={"line"}>Line</MenuItem>
-              </Select>
-            </FormControl>
-            <Divider className={classes.divider} orientation="vertical" />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <Paper className={classes.tabs}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
-              <Tab label="5 Days" />
-              <Tab label="1 Month" />
-              <Tab label="3 Months" />
-            </Tabs>
-            <Card>
-              <CardContent>
-                {/* <Typography
+                  <Select
+                    labelId="demo-controlled-open-select-label"
+                    id="demo-controlled-open-select"
+                    value={type}
+                    displayEmpty
+                    onChange={handleTypeChange}
+                  >
+                    <MenuItem value={"candlestick"}>Candlestick</MenuItem>
+                    <MenuItem value={"area"}>Area</MenuItem>
+                    <MenuItem value={"line"}>Line</MenuItem>
+                  </Select>
+                </FormControl>
+                <Divider className={classes.divider} orientation="vertical" />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Paper className={classes.tabs}>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  centered
+                >
+                  <Tab label="5 Days" />
+                  <Tab label="1 Month" />
+                  <Tab label="3 Months" />
+                </Tabs>
+                <Card>
+                  <CardContent>
+                    {/* <Typography
                   className={classes.title}
                   color="textSecondary"
                   gutterBottom
                 >
                   Historical Stock Chart
                 </Typography> */}
-                <StockChart
-                  symbol={searchId}
-                  amount={time}
-                  type={type}
-                  height={height}
-                ></StockChart>
-              </CardContent>
-            </Card>
-            {/* <Paper>
+                    <StockChart
+                      symbol={searchId}
+                      amount={time}
+                      type={type}
+                      height={height}
+                    ></StockChart>
+                  </CardContent>
+                </Card>
+                {/* <Paper>
               <StockChart
                 symbol={searchId}
                 amount={time}
                 type={type}
               ></StockChart>
             </Paper> */}
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <StockInfo symbol={searchId}></StockInfo>
-        </Grid>
-        <Grid item xs={12} sm={8}>
-          <StockHistoryList symbol={searchId}></StockHistoryList>
-        </Grid>
-      </Grid>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <StockInfo symbol={searchId}></StockInfo>
+            </Grid>
+            <Grid item xs={12} sm={8}>
+              <StockHistoryList symbol={searchId}></StockHistoryList>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </div>
   );
 };

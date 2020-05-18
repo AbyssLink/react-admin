@@ -33,7 +33,7 @@ export const NewsShow = (props) => {
     ));
     return (
       <div>
-        <Title title="Financial News" />
+        <Title title="Finance News" />
         <Grid container spacing={2}>
           {newsCards}
         </Grid>
