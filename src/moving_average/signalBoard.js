@@ -11,11 +11,11 @@ import Typography from "@material-ui/core/Typography";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ViewComfyIcon from "@material-ui/icons/ViewComfy";
+import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import React, { useState } from "react";
 import { Title } from "react-admin";
-import { DistribChart } from "./distribChart";
-import { VarCard } from "./varCard";
-
+import { SignalChart } from "./signalChart";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -59,14 +59,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const DistribBoard = (props) => {
+export const SignalBoard = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState("AAPL");
-  const [ratio, setRatio] = useState(0.1);
-  const [days, setDays] = useState(220);
-  const [searchId, setSearchId] = useState("AAPL|0.15|120");
+  const [fast, setFast] = useState(5);
+  const [slow, setSlow] = useState(20);
+  const [days, setDays] = useState(100);
+  const [searchId, setSearchId] = useState("AAPL|5|20|100");
   const [time] = useState(60);
+  const [height, setHeight] = React.useState(315);
+  const [gridSize, setGridSize] = React.useState(6);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleHeightHelperClick = (event) => {
+    if (height === 315) {
+      setHeight(680);
+    } else {
+      setHeight(315);
+    }
+  };
+
+  const handleGridChangerClick = (event) => {
+    if (gridSize === 6) {
+      setGridSize(12);
+    } else {
+      setGridSize(6);
+    }
+  };
 
   const handleHelperClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -81,7 +100,7 @@ export const DistribBoard = (props) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      setSearchId(symbolId + "|" + ratio + "|" + days);
+      setSearchId(symbolId + "|" + fast + "|" + slow + "|" + days);
       console.log("enter press here! ");
     }
   };
@@ -111,8 +130,16 @@ export const DistribBoard = (props) => {
                 <Divider className={classes.divider} orientation="vertical" />
                 <InputBase
                   className={classes.input}
-                  placeholder="Ratio(example: 0.1, -0.1)"
-                  onChange={(event) => setRatio(event.target.value)}
+                  placeholder="Fast_Signal(example: 5)"
+                  onChange={(event) => setFast(event.target.value)}
+                  onKeyPress={handleKeyPress}
+                />
+                <Divider className={classes.divider} orientation="vertical" />
+
+                <InputBase
+                  className={classes.input}
+                  placeholder="Slow_Signal(example: 20)"
+                  onChange={(event) => setSlow(event.target.value)}
                   onKeyPress={handleKeyPress}
                 />
                 <Divider className={classes.divider} orientation="vertical" />
@@ -122,6 +149,7 @@ export const DistribBoard = (props) => {
                   onChange={(event) => setDays(event.target.value)}
                   onKeyPress={handleKeyPress}
                 />
+                <Divider className={classes.divider} orientation="vertical" />
                 <IconButton
                   className={classes.iconButton}
                   aria-label="search"
@@ -162,17 +190,37 @@ export const DistribBoard = (props) => {
                     Data Source: AKShare
                   </Typography>
                 </Popover>
+                <Divider className={classes.divider} orientation="vertical" />
+                <IconButton
+                  // color="primary"
+                  className={classes.iconButton}
+                  aria-label="chart_type"
+                  aria-describedby={id}
+                  variant="contained"
+                  onClick={handleHeightHelperClick}
+                >
+                  <ZoomOutMapIcon />
+                </IconButton>
+                <Divider className={classes.divider} orientation="vertical" />
+                <IconButton
+                  // color="primary"
+                  className={classes.iconButton}
+                  aria-label="chart_type"
+                  aria-describedby={id}
+                  variant="contained"
+                  onClick={handleGridChangerClick}
+                >
+                  <ViewComfyIcon />
+                </IconButton>
               </Paper>
             </Grid>
             <Grid item xs={12}>
-              <VarCard symbol={searchId}></VarCard>
-            </Grid>
-            <Grid item xs={12}>
-              <DistribChart
+              <SignalChart
                 symbol={searchId}
                 amount={time}
-                height={300}
-              ></DistribChart>
+                height={height}
+                gridSize={gridSize}
+              ></SignalChart>
             </Grid>
           </Grid>
         </Container>

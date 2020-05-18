@@ -7,9 +7,9 @@
 
 ## 项目参考与地址
 
-在线演示：http://abysslink.xyz
+在线演示：https://finance.abysslink.xyz
 
-Presentation 演示：http://abysslink.xyz:8080
+Presentation：https://presentation.abysslink.xyz
 
 项目参考：https://www.coursera.org/learn/python-statistics-financial-analysis/home/welcome
 

@@ -1,3 +1,5 @@
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
@@ -82,80 +84,84 @@ export const SVMBoard = (props) => {
   return (
     <div className={classes.divRoot}>
       <Title title="Strategy to apply on stock" />
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={12}>
-          <Paper component="form" className={classes.root}>
-            <IconButton
-              color="primary"
-              className={classes.iconButton}
-              aria-label="links"
-              target="_blank"
-              href={"https://finance.yahoo.com/quote/" + searchId}
-            >
-              <TrendingUpIcon />
-            </IconButton>
-            <InputBase
-              className={classes.input}
-              placeholder="Symbol(example: GOOG)"
-              onChange={(event) => setSymbolId(event.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <Divider className={classes.divider} orientation="vertical" />
-            <InputBase
-              className={classes.input}
-              placeholder="Trains(example: 100)((<=250), Predicts = 300 - Trains)"
-              onChange={(event) => setDays(event.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <IconButton
-              className={classes.iconButton}
-              aria-label="search"
-              onClick={() => {
-                setSearchId(symbolId);
-                // console.log("Submit Button Click!, searchId = ", searchId);
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
-            <Divider className={classes.divider} orientation="vertical" />
-            <IconButton
-              // color="primary"
-              className={classes.iconButton}
-              aria-describedby={id}
-              variant="contained"
-              onClick={handleHelperClick}
-            >
-              <HelpOutlineIcon />
-            </IconButton>
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleHelperClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "center",
-              }}
-            >
-              <Typography className={classes.typography}>
-                Search any stock you like! <br />
-                And change chart type by Select <br />
-                Data Source: AKShare
-              </Typography>
-            </Popover>
-          </Paper>
-        </Grid>
-        {/*  <Grid item xs={12}>
+      <Box m={3}>
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={12}>
+              <Paper component="form" className={classes.root}>
+                <IconButton
+                  color="primary"
+                  className={classes.iconButton}
+                  aria-label="links"
+                  target="_blank"
+                  href={"https://finance.yahoo.com/quote/" + searchId}
+                >
+                  <TrendingUpIcon />
+                </IconButton>
+                <InputBase
+                  className={classes.input}
+                  placeholder="Symbol(example: GOOG)"
+                  onChange={(event) => setSymbolId(event.target.value)}
+                  onKeyPress={handleKeyPress}
+                />
+                <Divider className={classes.divider} orientation="vertical" />
+                <InputBase
+                  className={classes.input}
+                  placeholder="Trains(example: 100)((<=250), Predicts = 300 - Trains)"
+                  onChange={(event) => setDays(event.target.value)}
+                  onKeyPress={handleKeyPress}
+                />
+                <IconButton
+                  className={classes.iconButton}
+                  aria-label="search"
+                  onClick={() => {
+                    setSearchId(symbolId);
+                    // console.log("Submit Button Click!, searchId = ", searchId);
+                  }}
+                >
+                  <SearchIcon />
+                </IconButton>
+                <Divider className={classes.divider} orientation="vertical" />
+                <IconButton
+                  // color="primary"
+                  className={classes.iconButton}
+                  aria-describedby={id}
+                  variant="contained"
+                  onClick={handleHelperClick}
+                >
+                  <HelpOutlineIcon />
+                </IconButton>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleHelperClose}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "center",
+                  }}
+                >
+                  <Typography className={classes.typography}>
+                    Search any stock you like! <br />
+                    And change chart type by Select <br />
+                    Data Source: AKShare
+                  </Typography>
+                </Popover>
+              </Paper>
+            </Grid>
+            {/*  <Grid item xs={12}>
           <VarCard symbol={searchId}></VarCard>
         </Grid> */}
-        <Grid item xs={12}>
-          <SVMChart symbol={searchId}></SVMChart>
-        </Grid>
-      </Grid>
+            <Grid item xs={12}>
+              <SVMChart symbol={searchId}></SVMChart>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { Error, Loading, Title, useQueryWithStore } from "react-admin";
@@ -35,10 +37,14 @@ export const NewsShow = (props) => {
     ));
     return (
       <div>
-        <Title title="Financial News" />
-        <Grid container spacing={2}>
-          {newsCards}
-        </Grid>
+        <Title title="Finance News" />
+        <Box m={3}>
+          <Container maxWidth="lg">
+            <Grid container spacing={2}>
+              {newsCards}
+            </Grid>
+          </Container>
+        </Box>
       </div>
     );
   }
