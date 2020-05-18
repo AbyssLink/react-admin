@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "apexcharts": "^3.16.1",
     "dayjs": "^1.8.23",
+    "dotenv-cli": "^3.1.0",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^3.3.1",
     "ra-data-simple-rest": "^3.3.2",
@@ -18,8 +19,10 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "dotenv -e .env.production react-scripts start",
+    "start:dev": "dotenv -e .env.development react-scripts start",
+    "build": "dotenv -e .env.production react-scripts build",
+    "build:dev": "dotenv -e .env.development react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

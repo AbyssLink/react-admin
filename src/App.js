@@ -17,17 +17,13 @@ import { NewsRecommend } from "./news_recommend/newsRecommend";
 import { SVMBoard } from "./svm/svmBoard";
 import { UserCreate, UserEdit, UserList } from "./user/users";
 
-/* const theme = createMuiTheme({
-  palette: {
-    type: "light", // Switching the dark mode on is a single property value change.
-  },
-}); */
-
 const MyLoginPage = () => (
   <Login backgroundImage="https://www.onimodglobal.com/wp-content/uploads/2017/11/Digital-Marketing-Trends-2018.jpeg" />
 );
 
-const dataProvider = simpleRestProvider("https://flask.abysslink.xyz");
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const dataProvider = simpleRestProvider(BASE_URL);
 const App = () => (
   <Admin
     // theme={theme}
@@ -40,7 +36,7 @@ const App = () => (
     {/* <Resource name="posts" list={DashHome} /> */}
     <Resource name="History" list={StockHistory} icon={TodayIcon} />
     <Resource name="news" list={NewsShow} icon={RssFeedIcon} />
-    <Resource name="Recommend News" list={NewsRecommend} icon={RssFeedIcon} />
+    <Resource name="Search News" list={NewsRecommend} icon={RssFeedIcon} />
     <Resource name="Moving Average" list={SignalBoard} icon={LocalMallIcon} />
     <Resource name="Distribution" list={DistribBoard} icon={LocalMallIcon} />
     <Resource name="SVM" list={SVMBoard} icon={LocalMallIcon} />

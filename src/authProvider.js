@@ -1,7 +1,7 @@
 export default {
   // called when the user attempts to log in
   login: ({ username, password }) => {
-    const request = new Request("https://flask.abysslink.xyz/auth", {
+    const request = new Request(process.env.REACT_APP_BASE_URL + '/auth', {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: new Headers({ "Content-Type": "application/json" }),
