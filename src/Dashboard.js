@@ -46,7 +46,7 @@ const featuredPosts = [
 
 export default () => (
   <div>
-    <Title title="Homepage" />
+    <Title title="About This Project" />
     <Box m={3}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
