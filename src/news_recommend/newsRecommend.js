@@ -37,10 +37,10 @@ const useStyles = makeStyles((theme) => ({
 export const NewsRecommend = (props) => {
   const classes = useStyles();
   const [symbolId, setSymbolId] = useState(
-    "coronavirus will influence finance"
+    "coronavirus influences"
   );
   const [searchId, setSearchId] = useState(
-    "coronavirus will influence finance"
+    "coronavirus influences"
   );
 
   const handleKeyPress = (event) => {
@@ -59,7 +59,7 @@ export const NewsRecommend = (props) => {
               <Paper component="form" className={classes.root}>
                 <InputBase
                   className={classes.input}
-                  placeholder="Search for news with words or statment, e.g. coronavirus will influence finance"
+                  placeholder="Search for news with words or statment, e.g. coronavirus influences"
                   onChange={(event) => setSymbolId(event.target.value)}
                   onKeyPress={handleKeyPress}
                 />
